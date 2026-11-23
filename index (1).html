@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tonnarello San Pietro | Cucina Romana dal 1876 • Roma</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            espresso: {
+              950: '#120D0B',
+              900: '#1A1412',
+              800: '#261E1B',
+              700: '#382C28',
+            },
+            travertine: {
+              50: '#FDFBF7',
+              100: '#FBF8F3',
+              200: '#F3ECE1',
+              300: '#E5DAC8',
+            },
+            terracotta: {
+              500: '#C85A32',
+              600: '#B04A25',
+              700: '#8F391A',
+            },
+            saffron: {
+              400: '#E2B66D',
+              500: '#D4A359',
+              600: '#B8873D',
+            },
+            olive: {
+              600: '#556B2F',
+              700: '#425423',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FBF8F3;
+      color: #1A1412;
+      overflow-x: hidden;
+    }
+    .font-serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    .view-section {
+      display: none;
+      animation: editorialFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .view-section.active {
+      display: block;
+    }
+    @keyframes editorialFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Print styling for clean menu print/PDF export */
+    @media print {
+      body * { visibility: hidden; }
+      #print-menu-modal, #print-menu-modal * { visibility: visible; }
+      #print-menu-modal { position: absolute; left: 0; top: 0; width: 100%; background: white !important; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-terracotta-500 selection:text-white">
+
+  <!-- TOP AMBIENT BAR -->
+  <div class="bg-espresso-950 text-travertine-200 text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 text-saffron-400 font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span data-i18n="top_hours">Open Daily 11:30 – 23:00 • Continuous Kitchen</span>
+        </span>
+        <span class="hidden md:inline text-white/20">|</span>
+        <span class="hidden md:inline text-travertine-300">Via del Mascherino, 80 • 2 min from St. Peter's Square</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-saffron-400 font-semibold">★ 4.8 <span class="text-travertine-300 font-normal">(15,000+ Reviews)</span></span>
+        <a href="tel:+390645448433" class="hover:text-saffron-400 transition font-medium">+39 06 4544 8433</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY GLASSMORPHIC NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-travertine-100/90 backdrop-blur-md border-b border-travertine-300/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Mark -->
+        <button type="button" onclick="switchView('home')" class="flex items-center gap-3.5 text-left group focus:outline-none">
+          <div class="w-11 h-11 rounded-full bg-espresso-900 border border-saffron-500/40 flex items-center justify-center text-saffron-400 font-serif italic font-bold text-2xl shadow-md group-hover:scale-105 transition">
+            T
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-espresso-900 leading-none">Tonnarello</span>
+              <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-terracotta-500/10 text-terracotta-600 border border-terracotta-500/20">San Pietro</span>
+            </div>
+            <p class="text-[11px] uppercase tracking-[0.2em] text-espresso-700 font-semibold mt-0.5">Cucina Romana • Dal 1876</p>
+          </div>
+        </button>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-1">
+          <button type="button" onclick="switchView('home')" data-view-btn="home" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition" data-i18n="nav_home">Experience</button>
+          <button type="button" onclick="switchView('menu')" data-view-btn="menu" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition" data-i18n="nav_menu">Il Menù</button>
+          <button type="button" onclick="switchView('reserve')" data-view-btn="reserve" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition" data-i18n="nav_reserve">Book a Table</button>
+          <button type="button" onclick="switchView('faq')" data-view-btn="faq" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition" data-i18n="nav_faq">Info & FAQ</button>
+          <button type="button" onclick="switchView('contact')" data-view-btn="contact" class="nav-link px-4 py-2 rounded-full text-sm font-semibold transition" data-i18n="nav_contact">Location</button>
+        </nav>
+
+        <!-- Right Controls: Language Toggle, Tasting Note Badge, Quick Book CTA -->
+        <div class="flex items-center gap-2.5">
+          <!-- Bilingual EN / IT Switcher -->
+          <div class="inline-flex items-center rounded-full bg-travertine-200 p-1 border border-travertine-300" role="group" aria-label="Language switcher">
+            <button type="button" onclick="setLanguage('en')" id="lang-en-btn" class="px-2.5 py-1 rounded-full text-xs font-bold transition bg-espresso-900 text-travertine-50">EN</button>
+            <button type="button" onclick="setLanguage('it')" id="lang-it-btn" class="px-2.5 py-1 rounded-full text-xs font-bold transition text-espresso-700 hover:text-espresso-900">IT</button>
+          </div>
+
+          <!-- Table Tasting List Drawer Trigger -->
+          <button type="button" onclick="toggleTastingDrawer()" aria-label="Tasting Selection" class="relative p-2.5 rounded-full bg-travertine-200 hover:bg-travertine-300 text-espresso-900 transition border border-travertine-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+            <span id="tasting-badge" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-terracotta-500 text-white text-[10px] font-bold flex items-center justify-center">0</span>
+          </button>
+
+          <!-- Primary Reserve CTA -->
+          <button type="button" onclick="switchView('reserve')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white text-sm font-semibold shadow-md shadow-terracotta-500/20 transition">
+            <span data-i18n="cta_book_short">Reserve Table</span>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button type="button" onclick="toggleMobileNav()" aria-label="Open Navigation" class="lg:hidden p-2.5 rounded-full text-espresso-900 hover:bg-travertine-200 transition">
+            <svg id="mob-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+            <svg id="mob-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden bg-travertine-50 border-t border-travertine-300 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+      <button type="button" onclick="switchView('home'); toggleMobileNav(false)" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-espresso-900 hover:bg-travertine-200 flex justify-between items-center">
+        <span data-i18n="nav_home">Experience</span>
+        <span class="text-xs text-espresso-700">Dal 1876</span>
+      </button>
+      <button type="button" onclick="switchView('menu'); toggleMobileNav(false)" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-espresso-900 hover:bg-travertine-200 flex justify-between items-center">
+        <span data-i18n="nav_menu">Il Menù</span>
+        <span class="text-xs text-terracotta-600 font-bold">18 Dishes</span>
+      </button>
+      <button type="button" onclick="switchView('reserve'); toggleMobileNav(false)" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-espresso-900 hover:bg-travertine-200 flex justify-between items-center">
+        <span data-i18n="nav_reserve">Book a Table</span>
+        <span class="text-xs text-emerald-700 font-bold">Instant</span>
+      </button>
+      <button type="button" onclick="switchView('faq'); toggleMobileNav(false)" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-espresso-900 hover:bg-travertine-200 flex justify-between items-center">
+        <span data-i18n="nav_faq">Info & FAQ</span>
+        <span class="text-xs text-espresso-700">Gluten-Free & Dogs</span>
+      </button>
+      <button type="button" onclick="switchView('contact'); toggleMobileNav(false)" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-espresso-900 hover:bg-travertine-200 flex justify-between items-center">
+        <span data-i18n="nav_contact">Location</span>
+        <span class="text-xs text-espresso-700">Vatican / Borgo</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT VIEWS -->
+  <main class="flex-grow">
+
+    <!-- =========================================================
+         VIEW 1: HOME / EXPERIENCE
+    ========================================================== -->
+    <section id="view-home" class="view-section active">
+      <!-- Atmospheric Full-Bleed Hero -->
+      <div class="relative bg-espresso-950 text-travertine-50 overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=1920&q=85"
+               onerror="this.src='https://placehold.co/1920x1000/1A1412/D4A359?text=Tonnarello+San+Pietro+Roma'"
+               alt="Handmade Roman Carbonara in Skillet"
+               class="w-full h-full object-cover opacity-45 scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-r from-espresso-950 via-espresso-950/80 to-espresso-900/40"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-espresso-950 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
+          <div class="max-w-3xl">
+            <div class="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-saffron-500/30 text-xs sm:text-sm font-medium text-saffron-400 mb-6">
+              <span data-i18n="hero_badge">Dal 1876 • Cuore di Roma</span>
+              <span class="text-white/30">•</span>
+              <span>4.8 ★ (15,000+ Reviews)</span>
+            </div>
+
+            <h1 class="font-serif font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight mb-6" data-i18n="hero_title">
+              Authentic Roman Pasta, Served Sizzling in Our Signature Skillets.
+            </h1>
+
+            <p class="text-travertine-200 text-base sm:text-lg lg:text-xl leading-relaxed mb-9 max-w-2xl font-normal" data-i18n="hero_subtitle">
+              Steps from St. Peter’s Square in historic Borgo Pio, we craft fresh handmade tonnarelli every morning—tossed with aged Pecorino Romano D.O.P., crispy Guanciale di Norcia, and timeless Roman generosity.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4">
+              <button type="button" onclick="switchView('reserve')" class="px-8 py-4 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold text-base shadow-xl shadow-terracotta-500/30 transition transform hover:-translate-y-0.5 flex items-center gap-2.5">
+                <span data-i18n="hero_cta_book">Book a Table</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+              <button type="button" onclick="switchView('menu')" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-travertine-50 font-semibold text-base transition" data-i18n="hero_cta_menu">
+                Explore Il Menù
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editorial Split Section: La Tradizione di Roma -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-6 relative">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] bg-espresso-900">
+              <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=85"
+                   onerror="this.src='https://placehold.co/800x1000/261E1B/D4A359?text=La+Tradizione+di+Roma'"
+                   alt="Fresh Handmade Tonnarelli Pasta"
+                   class="w-full h-full object-cover" />
+            </div>
+            <!-- Floating Heritage Accent Card -->
+            <div class="hidden sm:block absolute -bottom-6 -right-6 bg-espresso-900 text-travertine-50 p-6 rounded-3xl shadow-2xl border border-saffron-500/30 max-w-xs">
+              <p class="font-serif italic text-2xl text-saffron-400 mb-1">“La Padellina”</p>
+              <p class="text-xs text-travertine-200 leading-relaxed">
+                Every pasta is finished directly in our traditional aluminum skillet to lock in creamy emulsion and heat from kitchen to table.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-6">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.22em] text-terracotta-600" data-i18n="trad_eyebrow">La Tradizione di Roma</span>
+            <h2 class="font-serif font-bold text-4xl sm:text-5xl text-espresso-900 leading-tight" data-i18n="trad_title">
+              Handcrafted Daily, Two Minutes from Piazza San Pietro.
+            </h2>
+            <p class="text-espresso-700 text-base leading-relaxed" data-i18n="trad_p1">
+              Since 1876, our family kitchen has honored the soul of Roman gastronomy. Our square-cut <strong>tonnarelli</strong> are extruded fresh every morning using bronze dies and stone-ground semolina so every strand clings to rich sauces.
+            </p>
+            <p class="text-espresso-700 text-base leading-relaxed" data-i18n="trad_p2">
+              Whether you are stepping out of the Vatican Museums for lunch or gathering with friends under the warm lights of Via del Mascherino for dinner, every guest is welcomed like family—including vegetarian, vegan, and gluten-free diners.
+            </p>
+
+            <!-- 3 Ingredient Pillars -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-travertine-300">
+              <div class="p-4 rounded-2xl bg-travertine-200/60 border border-travertine-300">
+                <p class="font-serif font-bold text-xl text-espresso-900">Pecorino D.O.P.</p>
+                <p class="text-xs text-espresso-700 mt-1">18-month aged Lazio sheep’s milk cheese</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-travertine-200/60 border border-travertine-300">
+                <p class="font-serif font-bold text-xl text-espresso-900">Guanciale I.G.P.</p>
+                <p class="text-xs text-espresso-700 mt-1">Pepper-cured pork cheek from Norcia</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-travertine-200/60 border border-travertine-300">
+                <p class="font-serif font-bold text-xl text-espresso-900">100% Gluten-Free</p>
+                <p class="text-xs text-espresso-700 mt-1">Available on request for all Primi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signature Dishes Showcase: I Nostri Classici -->
+      <div class="bg-espresso-900 text-travertine-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-[0.22em] text-saffron-400" data-i18n="sig_eyebrow">I Nostri Classici</span>
+              <h2 class="font-serif font-bold text-4xl sm:text-5xl mt-1" data-i18n="sig_title">Signature Skillet Pastas</h2>
+            </div>
+            <button type="button" onclick="switchView('menu')" class="px-6 py-3 rounded-full border border-saffron-500/40 text-saffron-400 hover:bg-saffron-500 hover:text-espresso-950 font-semibold text-sm transition self-start md:self-auto" data-i18n="sig_cta">
+              View Full Menu →
+            </button>
+          </div>
+
+          <div id="signature-dishes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Proof, Guest Voices & Delivery Partners -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-terracotta-600">Guest Voices</span>
+          <h2 class="font-serif font-bold text-4xl sm:text-5xl text-espresso-900 mt-1">Loved by Romans & Travelers Alike</h2>
+          <p class="text-sm text-espresso-700 mt-2">Rated <strong>4.8 / 5.0</strong> across more than 15,000 verified reviews on Google & TheFork.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+          <div class="bg-white rounded-3xl p-7 border border-travertine-300 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-saffron-500 text-base">★★★★★</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-espresso-700 bg-travertine-200 px-2.5 py-1 rounded-full">Google Review</span>
+            </div>
+            <p class="font-serif italic text-xl text-espresso-900 leading-relaxed mb-4">
+              “Hands down the best Carbonara of our entire Italy trip. Served piping hot in the little skillet right around the corner from St. Peter’s Basilica!”
+            </p>
+            <p class="text-xs font-bold text-espresso-700">— Claire & Thomas M., London</p>
+          </div>
+
+          <div class="bg-white rounded-3xl p-7 border border-travertine-300 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-saffron-500 text-base">★★★★★</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-espresso-700 bg-travertine-200 px-2.5 py-1 rounded-full">TheFork 9.4/10</span>
+            </div>
+            <p class="font-serif italic text-xl text-espresso-900 leading-relaxed mb-4">
+              “Da romano posso dire che la Cacio e Pepe e i Tonnarelli Nonna Nadia sono una garanzia assoluta. Servizio rapido, sorridente e prezzi onestissimi.”
+            </p>
+            <p class="text-xs font-bold text-espresso-700">— Alessandro F., Roma</p>
+          </div>
+
+          <div class="bg-white rounded-3xl p-7 border border-travertine-300 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-saffron-500 text-base">★★★★★</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-espresso-700 bg-travertine-200 px-2.5 py-1 rounded-full">Celiac Friendly</span>
+            </div>
+            <p class="font-serif italic text-xl text-espresso-900 leading-relaxed mb-4">
+              “Having gluten-free pasta available for every Roman classic was a dream. My gluten-free Amatriciana tasted indistinguishable from the regular one!”
+            </p>
+            <p class="text-xs font-bold text-espresso-700">— Sofia G., Milan</p>
+          </div>
+        </div>
+
+        <!-- Official Booking & Delivery Partners Strip -->
+        <div class="bg-travertine-200/70 rounded-3xl border border-travertine-300 p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-terracotta-600">Dining & Home Delivery Partners</p>
+            <p class="font-serif font-bold text-2xl text-espresso-900 mt-0.5">Enjoy Tonnarello San Pietro at Our Table or Your Hotel</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button type="button" onclick="switchView('reserve')" class="px-4 py-2 rounded-full bg-olive-600 text-white text-xs font-bold tracking-wide shadow-sm hover:bg-olive-700 transition">TheFork Official</button>
+            <span class="px-4 py-2 rounded-full bg-white border border-travertine-300 text-espresso-900 text-xs font-bold">Deliveroo</span>
+            <span class="px-4 py-2 rounded-full bg-white border border-travertine-300 text-espresso-900 text-xs font-bold">Glovo</span>
+            <span class="px-4 py-2 rounded-full bg-white border border-travertine-300 text-espresso-900 text-xs font-bold">JustEat</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 2: INTERACTIVE MENU ('IL MENÙ')
+    ========================================================== -->
+    <section id="view-menu" class="view-section">
+      <!-- Editorial Menu Header -->
+      <div class="bg-espresso-900 text-travertine-50 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.22em] text-saffron-400">Cucina Romana Autentica</span>
+            <h1 class="font-serif font-bold text-5xl sm:text-6xl mt-1" data-i18n="menu_heading">Il Nostro Menù</h1>
+            <p class="text-travertine-200 text-sm sm:text-base mt-2 max-w-2xl" data-i18n="menu_subheading">
+              All Primi Romani can be prepared with certified Gluten-Free Pasta upon request. Tap “+ Table Note” on any dish to build your personal tasting list before you arrive.
+            </p>
+          </div>
+          <button type="button" onclick="openPrintMenuModal()" class="px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-travertine-50 text-xs font-bold uppercase tracking-wider flex items-center gap-2 self-start md:self-auto transition">
+            <svg class="w-4 h-4 text-saffron-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z"/></svg>
+            <span>Print / Save Menu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sticky Category & Dietary Filter Bar -->
+      <div class="sticky top-20 z-30 bg-travertine-100/95 backdrop-blur-md border-b border-travertine-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-3">
+          <!-- Category Tabs -->
+          <div id="menu-category-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Dietary Filter Pills + Gluten-Free Highlight -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+            <div id="menu-dietary-pills" class="flex flex-wrap items-center gap-2">
+              <!-- Injected via JS -->
+            </div>
+            <span class="text-xs font-semibold text-olive-700 bg-olive-600/10 border border-olive-600/20 px-3 py-1 rounded-full">
+              🌾 Gluten-Free Pasta Available for All Primi
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Cards Grid -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div id="menu-items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 3: TABLE RESERVATION SYSTEM ('PRENOTA UN TAVOLO')
+    ========================================================== -->
+    <section id="view-reserve" class="view-section">
+      <div class="bg-espresso-900 text-travertine-50 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-saffron-400">Via del Mascherino, 80 • Roma</span>
+          <h1 class="font-serif font-bold text-5xl sm:text-6xl mt-1" data-i18n="res_heading">Prenota un Tavolo</h1>
+          <p class="text-travertine-200 text-sm sm:text-base mt-2 max-w-xl" data-i18n="res_subheading">
+            Reserve your table in three effortless steps. Instant confirmation with a 15-minute grace period after Vatican tours.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Interactive 3-Step Booking Card -->
+          <div class="lg:col-span-8 bg-white rounded-3xl border border-travertine-300 shadow-lg p-6 sm:p-10">
+            <!-- Step Progress Indicator -->
+            <div class="flex items-center justify-between mb-8 pb-6 border-b border-travertine-200">
+              <button type="button" onclick="goToBookingStep(1)" class="flex items-center gap-2.5 text-left">
+                <span id="step-dot-1" class="w-8 h-8 rounded-full bg-terracotta-500 text-white font-bold text-xs flex items-center justify-center">1</span>
+                <span class="text-xs sm:text-sm font-bold text-espresso-900">Guests & Date</span>
+              </button>
+              <div class="h-px flex-1 bg-travertine-300 mx-3"></div>
+              <button type="button" onclick="goToBookingStep(2)" class="flex items-center gap-2.5 text-left">
+                <span id="step-dot-2" class="w-8 h-8 rounded-full bg-travertine-200 text-espresso-700 font-bold text-xs flex items-center justify-center">2</span>
+                <span class="text-xs sm:text-sm font-bold text-espresso-700">Time Slot</span>
+              </button>
+              <div class="h-px flex-1 bg-travertine-300 mx-3"></div>
+              <button type="button" onclick="goToBookingStep(3)" class="flex items-center gap-2.5 text-left">
+                <span id="step-dot-3" class="w-8 h-8 rounded-full bg-travertine-200 text-espresso-700 font-bold text-xs flex items-center justify-center">3</span>
+                <span class="text-xs sm:text-sm font-bold text-espresso-700">Your Details</span>
+              </button>
+            </div>
+
+            <!-- STEP 1: PARTY SIZE, DATE & SEATING -->
+            <div id="booking-step-1" class="space-y-6">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-espresso-700 mb-3">1. Select Party Size</label>
+                <div id="party-size-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                  <!-- 1 to 10+ injected via JS -->
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="booking-date" class="block text-xs font-bold uppercase tracking-wider text-espresso-700 mb-2">2. Select Date</label>
+                  <input type="date" id="booking-date" onchange="updateBookingSummary()" class="w-full px-4 py-3 rounded-2xl border border-travertine-300 bg-travertine-50 focus:bg-white focus:border-terracotta-500 focus:outline-none text-sm font-semibold text-espresso-900" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-espresso-700 mb-2">3. Seating Preference</label>
+                  <div class="grid grid-cols-2 gap-2.5">
+                    <button type="button" onclick="selectSeating('Indoor Historic Room')" id="seat-indoor" class="p-3 rounded-2xl border-2 border-terracotta-500 bg-terracotta-500/5 text-left transition">
+                      <p class="text-xs font-bold text-espresso-900">Indoor Dining</p>
+                      <p class="text-[11px] text-espresso-700">Historic brick & AC</p>
+                    </button>
+                    <button type="button" onclick="selectSeating('Outdoor Borgo Terrace')" id="seat-outdoor" class="p-3 rounded-2xl border-2 border-travertine-300 bg-white text-left transition">
+                      <p class="text-xs font-bold text-espresso-900">Borgo Terrace</p>
+                      <p class="text-[11px] text-espresso-700">Al fresco Roman air</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 flex justify-end">
+                <button type="button" onclick="goToBookingStep(2)" class="px-7 py-3.5 rounded-full bg-espresso-900 hover:bg-terracotta-500 text-white font-semibold text-sm transition">
+                  Choose Time Slot →
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: TIME SLOTS -->
+            <div id="booking-step-2" class="hidden space-y-6">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-terracotta-600 mb-2">Pranzo • Lunch Service (11:30 – 15:30)</p>
+                <div id="lunch-slots-grid" class="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-terracotta-600 mb-2">Cena • Dinner Service (18:30 – 22:30)</p>
+                <div id="dinner-slots-grid" class="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <div class="pt-4 flex items-center justify-between">
+                <button type="button" onclick="goToBookingStep(1)" class="text-sm font-semibold text-espresso-700 hover:text-espresso-900">← Back</button>
+                <button type="button" onclick="goToBookingStep(3)" class="px-7 py-3.5 rounded-full bg-espresso-900 hover:bg-terracotta-500 text-white font-semibold text-sm transition">
+                  Enter Guest Details →
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: GUEST DETAILS & CONFIRMATION -->
+            <div id="booking-step-3" class="hidden">
+              <form onsubmit="confirmReservation(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-espresso-800 mb-1">Full Name *</label>
+                    <input type="text" id="res-name" required placeholder="Elena Conti" class="w-full px-4 py-3 rounded-2xl border border-travertine-300 bg-travertine-50 focus:bg-white focus:border-terracotta-500 focus:outline-none text-sm" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-espresso-800 mb-1">Mobile Phone (WhatsApp) *</label>
+                    <input type="tel" id="res-phone" required placeholder="+39 333 9876543" class="w-full px-4 py-3 rounded-2xl border border-travertine-300 bg-travertine-50 focus:bg-white focus:border-terracotta-500 focus:outline-none text-sm" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-espresso-800 mb-1">Email Address *</label>
+                  <input type="email" id="res-email" required placeholder="elena@example.com" class="w-full px-4 py-3 rounded-2xl border border-travertine-300 bg-travertine-50 focus:bg-white focus:border-terracotta-500 focus:outline-none text-sm" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-espresso-800 mb-2">Special Requests (Optional)</label>
+                  <div class="flex flex-wrap gap-2 mb-2.5">
+                    <button type="button" onclick="toggleQuickTag(this, 'Gluten-Free Pasta')" class="px-3 py-1.5 rounded-full border border-travertine-300 text-xs font-semibold text-espresso-700 hover:border-terracotta-500 transition">+ Gluten-Free Pasta</button>
+                    <button type="button" onclick="toggleQuickTag(this, 'Baby High Chair')" class="px-3 py-1.5 rounded-full border border-travertine-300 text-xs font-semibold text-espresso-700 hover:border-terracotta-500 transition">+ High Chair</button>
+                    <button type="button" onclick="toggleQuickTag(this, 'Small Dog')" class="px-3 py-1.5 rounded-full border border-travertine-300 text-xs font-semibold text-espresso-700 hover:border-terracotta-500 transition">+ Bringing Small Dog</button>
+                    <button type="button" onclick="toggleQuickTag(this, 'Birthday / Anniversary')" class="px-3 py-1.5 rounded-full border border-travertine-300 text-xs font-semibold text-espresso-700 hover:border-terracotta-500 transition">+ Celebration</button>
+                  </div>
+                  <textarea id="res-notes" rows="2" placeholder="Any allergies, stroller space, or special notes..." class="w-full px-4 py-2.5 rounded-2xl border border-travertine-300 bg-travertine-50 focus:bg-white focus:border-terracotta-500 focus:outline-none text-sm"></textarea>
+                </div>
+
+                <div class="pt-3 flex items-center justify-between">
+                  <button type="button" onclick="goToBookingStep(2)" class="text-sm font-semibold text-espresso-700 hover:text-espresso-900">← Back</button>
+                  <button type="submit" class="px-8 py-4 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-sm shadow-lg shadow-terracotta-500/25 transition">
+                    Confirm Table Reservation
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- STEP 4: INSTANT CONFIRMED RESERVATION CARD -->
+            <div id="booking-confirmed-card" class="hidden text-center py-6 space-y-5">
+              <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+              <div>
+                <span id="confirmed-code" class="inline-block px-3.5 py-1 rounded-full bg-terracotta-500/10 text-terracotta-600 text-xs font-bold tracking-wider uppercase mb-2">CODE #TSP-1876</span>
+                <h2 class="font-serif font-bold text-4xl text-espresso-900">Your Table is Reserved!</h2>
+                <p id="confirmed-subtitle" class="text-sm text-espresso-700 mt-1">We look forward to welcoming you at Via del Mascherino, 80.</p>
+              </div>
+
+              <div id="confirmed-details-box" class="max-w-md mx-auto bg-travertine-100 rounded-2xl border border-travertine-300 p-5 text-left text-xs space-y-2">
+                <!-- Populated on submit -->
+              </div>
+
+              <div class="flex flex-wrap justify-center gap-3 pt-2">
+                <button type="button" onclick="downloadCalendarInvite()" class="px-5 py-2.5 rounded-full bg-espresso-900 text-white text-xs font-bold hover:bg-espresso-800 transition">
+                  + Add to Calendar (.ics)
+                </button>
+                <button type="button" onclick="resetBookingFlow()" class="px-5 py-2.5 rounded-full border border-travertine-300 text-espresso-800 text-xs font-bold hover:bg-travertine-200 transition">
+                  Make Another Booking
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Reservation Summary Sidebar -->
+          <div class="lg:col-span-4 space-y-5">
+            <div class="bg-espresso-900 text-travertine-50 rounded-3xl p-7 shadow-xl border border-saffron-500/20">
+              <span class="text-[11px] font-bold uppercase tracking-widest text-saffron-400">Your Reservation Summary</span>
+              <h3 class="font-serif font-bold text-3xl mt-1 mb-5">Tonnarello San Pietro</h3>
+
+              <div class="space-y-3.5 text-sm border-y border-white/10 py-4">
+                <div class="flex justify-between">
+                  <span class="text-travertine-300">Guests</span>
+                  <span id="sum-guests" class="font-bold text-white">2 Guests</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-travertine-300">Date</span>
+                  <span id="sum-date" class="font-bold text-white">Today</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-travertine-300">Time</span>
+                  <span id="sum-time" class="font-bold text-saffron-400">20:00</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-travertine-300">Area</span>
+                  <span id="sum-seating" class="font-bold text-white">Indoor Historic Room</span>
+                </div>
+              </div>
+
+              <ul class="mt-5 space-y-2 text-xs text-travertine-200">
+                <li>✓ 15-minute grace period held for your table</li>
+                <li>✓ No booking deposit required</li>
+                <li>✓ Immediate confirmation via email</li>
+              </ul>
+
+              <div class="mt-6 pt-5 border-t border-white/10">
+                <p class="text-[11px] text-travertine-300 mb-2">Prefer booking through TheFork?</p>
+                <a href="https://www.thefork.it" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white text-xs font-bold transition">
+                  Book via TheFork Official →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 4: FAQ & PRACTICAL INFO ('INFO & FAQ')
+    ========================================================== -->
+    <section id="view-faq" class="view-section">
+      <div class="bg-espresso-900 text-travertine-50 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-saffron-400">Good to Know Before You Dine</span>
+          <h1 class="font-serif font-bold text-5xl sm:text-6xl mt-1">Info & Frequently Asked Questions</h1>
+          <p class="text-travertine-200 text-sm sm:text-base mt-2 max-w-2xl">
+            Everything you need to know about dietary accommodations, accessibility, pets, Vatican parking, and reservations.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div id="faq-accordion" class="space-y-3.5">
+          <!-- Injected via JS -->
+        </div>
+
+        <div class="mt-12 bg-travertine-200/80 rounded-3xl border border-travertine-300 p-8 text-center">
+          <h3 class="font-serif font-bold text-3xl text-espresso-900">Have a Special Group or Dietary Request?</h3>
+          <p class="text-sm text-espresso-700 mt-1 mb-5">Call our Borgo desk directly between 11:30 and 23:00—our team speaks English and Italian.</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="tel:+390645448433" class="px-6 py-3 rounded-full bg-espresso-900 text-white text-xs font-bold hover:bg-terracotta-500 transition">Call +39 06 4544 8433</a>
+            <button type="button" onclick="switchView('reserve')" class="px-6 py-3 rounded-full bg-terracotta-500 text-white text-xs font-bold hover:bg-terracotta-600 transition">Reserve Online</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 5: LOCATION & CONTACT ('DOVE SIAMO')
+    ========================================================== -->
+    <section id="view-contact" class="view-section">
+      <div class="bg-espresso-900 text-travertine-50 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-saffron-400">Borgo Pio • Vatican City</span>
+          <h1 class="font-serif font-bold text-5xl sm:text-6xl mt-1">Dove Siamo & Contatti</h1>
+          <p class="text-travertine-200 text-sm sm:text-base mt-2 max-w-2xl">
+            Tucked along historic Via del Mascherino—just a 2-minute stroll from St. Peter’s Colonade and 8 minutes from Ottaviano Metro Station.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Contact Details & Walking Guide -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white rounded-3xl border border-travertine-300 p-7 shadow-sm space-y-5">
+              <div>
+                <h2 class="font-serif font-bold text-3xl text-espresso-900">Tonnarello San Pietro</h2>
+                <p class="text-xs text-espresso-700">Cucina Romana Tradizionale • Dal 1876</p>
+              </div>
+
+              <div class="space-y-4 text-sm border-t border-travertine-200 pt-4">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-terracotta-600">Address</p>
+                  <p class="font-semibold text-espresso-900 mt-0.5">Via del Mascherino, 80, 00193 Roma RM, Italy</p>
+                </div>
+
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-terracotta-600">Opening Hours</p>
+                  <p class="font-semibold text-espresso-900 mt-0.5">Open Every Day: 11:30 – 23:00</p>
+                  <p class="text-xs text-emerald-700 font-medium">Continuous kitchen service (lunch, aperitivo & dinner)</p>
+                </div>
+
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-terracotta-600">Direct Phone & Email</p>
+                  <p class="mt-0.5">
+                    <a href="tel:+390645448433" class="font-bold text-espresso-900 hover:text-terracotta-600">+39 06 4544 8433</a>
+                  </p>
+                  <p>
+                    <a href="mailto:info@tonnarellosanpietro.it" class="text-espresso-700 hover:text-terracotta-600">info@tonnarellosanpietro.it</a>
+                  </p>
+                </div>
+
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-terracotta-600">Instagram</p>
+                  <a href="https://www.instagram.com/tonnarellosanpietro/" target="_blank" rel="noopener noreferrer" class="font-semibold text-espresso-900 hover:text-terracotta-600">@tonnarellosanpietro</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Walking Tip Card -->
+            <div class="bg-espresso-900 text-travertine-50 rounded-3xl p-7 shadow-md">
+              <span class="text-xs font-bold uppercase tracking-widest text-saffron-400">Walking Directions</span>
+              <h3 class="font-serif font-bold text-2xl mt-1 mb-2">From St. Peter’s Square (2 Mins)</h3>
+              <p class="text-xs text-travertine-200 leading-relaxed">
+                Facing St. Peter’s Basilica, exit Piazza San Pietro through the right-hand Bernini colonnade onto <strong>Via di Porta Angelica</strong>. Turn right onto <strong>Via del Mascherino</strong>—you will find our warm terracotta façade and outdoor tables at number 80.
+              </p>
+            </div>
+          </div>
+
+          <!-- Interactive Embedded Map -->
+          <div class="lg:col-span-7 bg-white rounded-3xl border border-travertine-300 overflow-hidden shadow-sm flex flex-col">
+            <div class="p-5 border-b border-travertine-200 flex flex-wrap items-center justify-between gap-2">
+              <span class="font-bold text-sm text-espresso-900">📍 Via del Mascherino, 80 • 00193 Roma RM</span>
+              <a href="https://maps.google.com/?q=Via+del+Mascherino,+80,+00193+Roma+RM" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-terracotta-600 hover:underline">
+                Open in Google Maps →
+              </a>
+            </div>
+            <div class="w-full flex-grow min-h-[380px] bg-travertine-200">
+              <iframe
+                title="Tonnarello San Pietro Map"
+                src="https://maps.google.com/maps?q=Via%20del%20Mascherino%2C%2080%2C%2000193%20Roma%20RM&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                class="w-full h-full min-h-[380px] border-0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LUXURY EDITORIAL FOOTER -->
+  <footer class="bg-espresso-950 text-travertine-300 border-t border-white/10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div class="md:col-span-2 space-y-3">
+          <p class="font-serif font-bold text-3xl text-travertine-50">Tonnarello <span class="text-saffron-400 italic font-normal">San Pietro</span></p>
+          <p class="text-xs text-travertine-300 leading-relaxed max-w-md">
+            Authentic Roman cuisine in Borgo Pio since 1876. Fresh handmade tonnarelli, aged Pecorino Romano D.O.P., and warm hospitality minutes from St. Peter’s Square.
+          </p>
+        </div>
+        <div class="space-y-2 text-xs">
+          <p class="font-bold uppercase tracking-wider text-saffron-400 mb-3">Navigation</p>
+          <button type="button" onclick="switchView('home')" class="block hover:text-white transition">Experience</button>
+          <button type="button" onclick="switchView('menu')" class="block hover:text-white transition">Il Menù</button>
+          <button type="button" onclick="switchView('reserve')" class="block hover:text-white transition">Book a Table</button>
+          <button type="button" onclick="switchView('faq')" class="block hover:text-white transition">Info & FAQ</button>
+          <button type="button" onclick="switchView('contact')" class="block hover:text-white transition">Location</button>
+        </div>
+        <div class="space-y-2 text-xs">
+          <p class="font-bold uppercase tracking-wider text-saffron-400 mb-3">Visit Us</p>
+          <p>Via del Mascherino, 80</p>
+          <p>00193 Roma RM, Italy</p>
+          <p class="pt-1 text-emerald-400 font-semibold">Open Daily: 11:30 – 23:00</p>
+          <p><a href="tel:+390645448433" class="hover:text-white transition">+39 06 4544 8433</a></p>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-travertine-300/75">
+        <p>© 2026 Tonnarello San Pietro • Cucina Romana dal 1876</p>
+        <p>Via del Mascherino, 80 • Roma</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TASTING SELECTION DRAWER -->
+  <div id="tasting-drawer" class="fixed inset-0 z-50 hidden justify-end bg-black/55 backdrop-blur-xs">
+    <div class="bg-travertine-50 w-full max-w-md h-full flex flex-col justify-between p-6 shadow-2xl border-l border-travertine-300">
+      <div class="flex items-center justify-between pb-4 border-b border-travertine-300">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-terracotta-600">Table Companion</span>
+          <h3 class="font-serif font-bold text-3xl text-espresso-900">Your Tasting Note</h3>
+        </div>
+        <button type="button" onclick="toggleTastingDrawer(false)" aria-label="Close tasting note" class="w-9 h-9 rounded-full bg-travertine-200 hover:bg-travertine-300 text-espresso-900 flex items-center justify-center font-bold transition">
+          ✕
+        </button>
+      </div>
+
+      <div id="tasting-list-items" class="flex-1 overflow-y-auto py-5 space-y-3">
+        <!-- Populated via JS -->
+      </div>
+
+      <div class="pt-4 border-t border-travertine-300 space-y-3">
+        <div class="flex justify-between text-sm font-bold text-espresso-900">
+          <span data-i18n="tasting_total_label">Estimated Tasting Total</span>
+          <span id="tasting-total" class="text-terracotta-600">€0.00</span>
+        </div>
+        <button type="button" onclick="copyWaiterSummary()" class="w-full py-3 rounded-full bg-espresso-900 hover:bg-espresso-800 text-travertine-50 text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-saffron-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg>
+          <span data-i18n="copy_waiter_btn">Copy Order for Waiter (IT)</span>
+        </button>
+        <button type="button" onclick="attachTastingToReservation()" class="w-full py-3.5 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold uppercase tracking-wider transition" data-i18n="attach_res_btn">
+          Book a Table with These Notes →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISH CUSTOMIZATION MODAL ('PERSONALIZZA IL PIATTO') -->
+  <div id="customize-modal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/65 backdrop-blur-xs p-0 sm:p-4">
+    <div class="bg-travertine-50 rounded-t-3xl sm:rounded-3xl max-w-xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-travertine-300 overflow-hidden">
+      <!-- Modal Top Header with Image -->
+      <div class="relative h-44 sm:h-48 bg-espresso-950 shrink-0">
+        <img id="cust-dish-img" src="" alt="" class="w-full h-full object-cover opacity-70" />
+        <div class="absolute inset-0 bg-gradient-to-t from-espresso-950 via-espresso-950/50 to-transparent"></div>
+        <button type="button" onclick="closeCustomizeModal()" aria-label="Close customization modal" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-espresso-950/80 hover:bg-terracotta-500 text-white flex items-center justify-center transition border border-white/15">
+          ✕
+        </button>
+        <div class="absolute bottom-4 left-6 right-6 text-travertine-50">
+          <span id="cust-dish-cat" class="inline-block px-2.5 py-0.5 rounded-full bg-terracotta-500 text-white text-[10px] font-bold uppercase tracking-wider mb-1">Primi Romani</span>
+          <div class="flex items-end justify-between gap-3">
+            <h3 id="cust-dish-title" class="font-serif font-bold text-3xl leading-none">Tonnarello Carbonara</h3>
+            <span id="cust-dish-base-price" class="font-extrabold text-xl text-saffron-400 shrink-0">€12.50</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable Customization Body -->
+      <div class="p-6 overflow-y-auto space-y-6 flex-1">
+        <p id="cust-dish-desc" class="text-xs text-espresso-700 leading-relaxed"></p>
+
+        <!-- 1. Remove Ingredients Toggle Pills -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <label class="text-xs font-bold uppercase tracking-wider text-espresso-900" data-i18n="cust_remove_label">
+              Tap Ingredients to Remove
+            </label>
+            <span id="cust-removed-counter" class="text-[11px] font-semibold text-terracotta-600"></span>
+          </div>
+          <div id="cust-ingredients-grid" class="flex flex-wrap gap-2">
+            <!-- Ingredient toggle buttons injected via JS -->
+          </div>
+        </div>
+
+        <!-- 2. Pasta / Preparation Options -->
+        <div id="cust-prep-section">
+          <label class="block text-xs font-bold uppercase tracking-wider text-espresso-900 mb-2.5" data-i18n="cust_prep_label">
+            Pasta & Preparation Style
+          </label>
+          <div id="cust-prep-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <!-- Prep option radio cards injected via JS -->
+          </div>
+        </div>
+
+        <!-- 3. Kitchen Note for the Chef -->
+        <div>
+          <label for="cust-chef-note" class="block text-xs font-bold uppercase tracking-wider text-espresso-900 mb-2" data-i18n="cust_note_label">
+            Kitchen Note (Note per lo Chef)
+          </label>
+          <div id="cust-quick-chips" class="flex flex-wrap gap-1.5 mb-2.5">
+            <!-- Quick note chips injected via JS -->
+          </div>
+          <input type="text" id="cust-chef-note" placeholder="e.g. No onion, sauce on the side, mild pepper..." class="w-full px-4 py-2.5 rounded-2xl border border-travertine-300 bg-white focus:border-terracotta-500 focus:outline-none text-xs text-espresso-900" />
+        </div>
+      </div>
+
+      <!-- Sticky Modal Footer -->
+      <div class="p-5 bg-white border-t border-travertine-300 flex items-center justify-between gap-4 shrink-0">
+        <div>
+          <span class="block text-[10px] font-bold uppercase tracking-wider text-espresso-700" data-i18n="cust_total_label">Dish Total</span>
+          <span id="cust-live-price" class="font-extrabold text-xl text-espresso-900">€12.50</span>
+        </div>
+        <button type="button" onclick="saveCustomizedDish()" id="cust-submit-btn" class="px-6 py-3.5 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-terracotta-500/25 transition">
+          Add to Tasting Note
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINTABLE MENU MODAL -->
+  <div id="print-menu-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-xs p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[88vh] overflow-y-auto p-6 sm:p-10 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
+        <div>
+          <h2 class="font-serif font-bold text-3xl text-espresso-900">Tonnarello San Pietro — Menu</h2>
+          <p class="text-xs text-gray-500">Via del Mascherino, 80, Roma • Gluten-Free Pasta Available for All Primi</p>
+        </div>
+        <div class="flex items-center gap-2 no-print">
+          <button type="button" onclick="window.print()" class="px-4 py-2 rounded-full bg-espresso-900 text-white text-xs font-bold">Print / PDF</button>
+          <button type="button" onclick="closePrintMenuModal()" class="p-2 rounded-full hover:bg-gray-100 text-gray-600">✕</button>
+        </div>
+      </div>
+      <div id="printable-menu-body" class="space-y-6 text-sm">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-espresso-900 text-travertine-50 px-5 py-3.5 rounded-full shadow-xl border border-saffron-500/30 flex items-center gap-2.5 text-xs font-semibold">
+      <span class="w-2 h-2 rounded-full bg-saffron-400"></span>
+      <span id="toast-text">Saved to table tasting note</span>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE JAVASCRIPT ENGINE -->
+  <script>
+    const TRANSLATIONS = {
+      en: {
+        top_hours: "Open Daily 11:30 – 23:00 • Continuous Kitchen",
+        nav_home: "Experience",
+        nav_menu: "Il Menù",
+        nav_reserve: "Book a Table",
+        nav_faq: "Info & FAQ",
+        nav_contact: "Location",
+        cta_book_short: "Reserve Table",
+        hero_badge: "Dal 1876 • Cuore di Roma",
+        hero_title: "Authentic Roman Pasta, Served Sizzling in Our Signature Skillets.",
+        hero_subtitle: "Steps from St. Peter’s Square in historic Borgo Pio, we craft fresh handmade tonnarelli every morning—tossed with aged Pecorino Romano D.O.P., crispy Guanciale di Norcia, and timeless Roman generosity.",
+        hero_cta_book: "Book a Table",
+        hero_cta_menu: "Explore Il Menù",
+        trad_eyebrow: "La Tradizione di Roma",
+        trad_title: "Handcrafted Daily, Two Minutes from Piazza San Pietro.",
+        trad_p1: "Since 1876, our family kitchen has honored the soul of Roman gastronomy. Our square-cut tonnarelli are extruded fresh every morning using bronze dies and stone-ground semolina so every strand clings to rich sauces.",
+        trad_p2: "Whether you are stepping out of the Vatican Museums for lunch or gathering with friends under the warm lights of Via del Mascherino for dinner, every guest is welcomed like family—including vegetarian, vegan, and gluten-free diners.",
+        sig_eyebrow: "I Nostri Classici",
+        sig_title: "Signature Skillet Pastas",
+        sig_cta: "View Full Menu →",
+        menu_heading: "Il Nostro Menù",
+        menu_subheading: "All Primi Romani can be prepared with certified Gluten-Free Pasta upon request. Tap “+ Table Note” on any dish to build your personal tasting list before you arrive.",
+        res_heading: "Prenota un Tavolo",
+        res_subheading: "Reserve your table in three effortless steps. Instant confirmation with a 15-minute grace period after Vatican tours.",
+        tasting_total_label: "Estimated Tasting Total",
+        copy_waiter_btn: "Copy Order for Waiter (IT)",
+        attach_res_btn: "Book a Table with These Notes →",
+        cust_remove_label: "Tap Ingredients to Remove",
+        cust_prep_label: "Pasta & Preparation Style",
+        cust_note_label: "Kitchen Note (Note per lo Chef)",
+        cust_total_label: "Dish Total"
+      },
+      it: {
+        top_hours: "Aperti Tutti i Giorni 11:30 – 23:00 • Cucina Continua",
+        nav_home: "Esperienza",
+        nav_menu: "Il Menù",
+        nav_reserve: "Prenota Tavolo",
+        nav_faq: "Info & FAQ",
+        nav_contact: "Dove Siamo",
+        cta_book_short: "Prenota Ora",
+        hero_badge: "Dal 1876 • Cuore di Roma",
+        hero_title: "La Vera Pasta Romana, Servita Fumante nelle Nostre Padelline.",
+        hero_subtitle: "A due passi da Piazza San Pietro nello storico Borgo Pio, trafiliamo ogni mattina tonnarelli freschi fatti a mano—mantecati con Pecorino Romano D.O.P. e Guanciale di Norcia.",
+        hero_cta_book: "Prenota un Tavolo",
+        hero_cta_menu: "Scopri Il Menù",
+        trad_eyebrow: "La Tradizione di Roma",
+        trad_title: "Fatti a Mano Ogni Giorno, a Due Minuti da San Pietro.",
+        trad_p1: "Dal 1876 la nostra cucina di famiglia celebra l'anima della gastronomia romana. I nostri tonnarelli quadrati vengono trafilati al bronzo ogni mattina per raccogliere al meglio ogni condimento.",
+        trad_p2: "Che tu stia uscendo dai Musei Vaticani per pranzo o cenando sotto le luci di Via del Mascherino, ogni ospite è di casa—con proposte vegetariane, vegane e pasta senza glutine.",
+        sig_eyebrow: "I Nostri Classici",
+        sig_title: "Le Padelline della Tradizione",
+        sig_cta: "Vedi Tutto il Menù →",
+        menu_heading: "Il Nostro Menù",
+        menu_subheading: "Tutti i Primi Romani sono disponibili anche con Pasta Senza Glutine. Aggiungi i tuoi piatti preferiti alla nota tavolo prima di arrivare.",
+        res_heading: "Prenota un Tavolo",
+        res_subheading: "Prenota il tuo tavolo in tre semplici passaggi. Conferma immediata con 15 minuti di tolleranza.",
+        tasting_total_label: "Totale Degustazione Stimato",
+        copy_waiter_btn: "Copia Ordine per il Cameriere (IT)",
+        attach_res_btn: "Prenota un Tavolo con Queste Note →",
+        cust_remove_label: "Tocca gli Ingredienti da Rimuovere",
+        cust_prep_label: "Formato Pasta & Preparazione",
+        cust_note_label: "Nota per lo Chef",
+        cust_total_label: "Totale Piatto"
+      }
+    };
+
+    const MENU_ITEMS = [
+      {
+        id: 'carbonara',
+        name: 'Tonnarello Carbonara',
+        category: 'Primi Romani',
+        price: 12.50,
+        signature: true,
+        vegetarian: false,
+        gfAvailable: true,
+        badge: 'Iconic Skillet',
+        image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Fresh handmade tonnarelli, crispy Guanciale di Norcia, organic egg yolk cream, Pecorino Romano D.O.P. & freshly cracked black pepper.',
+        descIt: 'Tonnarelli freschi fatti a mano, Guanciale di Norcia croccante, crema di tuorli, Pecorino Romano D.O.P. e pepe nero.',
+        ingredients: [
+          { en: 'Crispy Guanciale', it: 'Guanciale croccante', removable: true },
+          { en: 'Pecorino Romano D.O.P.', it: 'Pecorino Romano D.O.P.', removable: true },
+          { en: 'Black pepper', it: 'Pepe nero', removable: true },
+          { en: 'Organic egg yolk', it: "Tuorlo d'uovo", removable: false }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Classic Fresh Tonnarello', labelIt: 'Tonnarello Fresco Classico', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Pasta', labelIt: 'Pasta Senza Glutine', extra: 2.00 },
+          { id: 'light-pepper', labelEn: 'Light Black Pepper', labelIt: 'Poco Pepe Nero', extra: 0 },
+          { id: 'extra-creamy', labelEn: 'Extra Creamy Egg Sauce', labelIt: 'Più Cremosa', extra: 0 }
+        ]
+      },
+      {
+        id: 'cacio-e-pepe',
+        name: 'Tonnarello Cacio e Pepe',
+        category: 'Primi Romani',
+        price: 11.00,
+        signature: true,
+        vegetarian: true,
+        gfAvailable: true,
+        badge: 'Vegetarian',
+        image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Silky emulsion of aged Pecorino Romano D.O.P. and toasted Sarawak black peppercorns tossed in our signature skillet.',
+        descIt: 'Mantecatura cremosa di Pecorino Romano D.O.P. stagionato e pepe nero tostato nella nostra padellina.',
+        ingredients: [
+          { en: 'Black pepper', it: 'Pepe nero', removable: true },
+          { en: 'Extra Pecorino dusting', it: 'Spolverata di Pecorino', removable: true },
+          { en: 'Pecorino Romano D.O.P. cream', it: 'Crema di Pecorino D.O.P.', removable: false }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Classic Fresh Tonnarello', labelIt: 'Tonnarello Fresco Classico', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Pasta', labelIt: 'Pasta Senza Glutine', extra: 2.00 },
+          { id: 'mild-pepper', labelEn: 'Mild Pepper (Poco Pepe)', labelIt: 'Poco Pepe Nero', extra: 0 }
+        ]
+      },
+      {
+        id: 'nonna-nadia',
+        name: 'Tonnarello "Nonna Nadia"',
+        category: 'Primi Romani',
+        price: 13.00,
+        signature: true,
+        vegetarian: true,
+        gfAvailable: true,
+        badge: 'Vegan Option',
+        image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Sweet San Marzano datterini tomatoes, roasted garlic, fresh basil, and EVOO—ask for our 100% plant-based preparation.',
+        descIt: 'Pomodorini datterini dolci, aglio dolce, basilico fresco ed olio EVO—disponibile anche in versione 100% vegana.',
+        ingredients: [
+          { en: 'Datterini tomatoes', it: 'Pomodorini datterini', removable: true },
+          { en: 'Roasted garlic', it: 'Aglio', removable: true },
+          { en: 'Fresh basil', it: 'Basilico fresco', removable: true },
+          { en: 'Parmigiano garnish', it: 'Parmigiano', removable: true }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Classic Fresh Tonnarello', labelIt: 'Tonnarello Fresco Classico', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Pasta', labelIt: 'Pasta Senza Glutine', extra: 2.00 },
+          { id: 'vegan', labelEn: '100% Vegan (No Cheese/Egg)', labelIt: '100% Vegano', extra: 0 }
+        ]
+      },
+      {
+        id: 'amatriciana',
+        name: "Rigatoni all'Amatriciana",
+        category: 'Primi Romani',
+        price: 11.00,
+        signature: true,
+        vegetarian: false,
+        gfAvailable: true,
+        badge: 'Roman Classic',
+        image: 'https://images.unsplash.com/photo-1598866594230-a7c12756260f?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Bronze-die rigatoni simmered with crispy Guanciale di Norcia, slow-cooked tomato sauce, white wine & Pecorino Romano.',
+        descIt: 'Rigatoni trafilati al bronzo con Guanciale di Norcia croccante, salsa di pomodoro, vino bianco e Pecorino Romano.',
+        ingredients: [
+          { en: 'Tomato sauce', it: 'Salsa di pomodoro', removable: true },
+          { en: 'Crispy Guanciale', it: 'Guanciale croccante', removable: true },
+          { en: 'Pecorino Romano D.O.P.', it: 'Pecorino Romano D.O.P.', removable: true },
+          { en: 'Black pepper & chili', it: 'Pepe nero e peperoncino', removable: true }
+        ],
+        prepOptions: [
+          { id: 'rigatoni', labelEn: 'Classic Rigatoni', labelIt: 'Rigatoni Classici', extra: 0 },
+          { id: 'tonnarello', labelEn: 'Swap to Fresh Tonnarello', labelIt: 'Con Tonnarello Fresco', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Pasta', labelIt: 'Pasta Senza Glutine', extra: 2.00 }
+        ]
+      },
+      {
+        id: 'carbonara-carciofi',
+        name: 'Tonnarello Carbonara con Carciofi',
+        category: 'Primi Romani',
+        price: 14.00,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: true,
+        badge: 'House Specialty',
+        image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Our classic skillet Carbonara enriched with golden crispy Roman artichokes and Pecorino Romano D.O.P.',
+        descIt: 'La nostra classica Carbonara in padellina arricchita con carciofi romani dorati e croccanti.',
+        ingredients: [
+          { en: 'Crispy Roman artichokes', it: 'Carciofi romani', removable: true },
+          { en: 'Crispy Guanciale', it: 'Guanciale croccante', removable: true },
+          { en: 'Pecorino Romano D.O.P.', it: 'Pecorino Romano D.O.P.', removable: true },
+          { en: 'Black pepper', it: 'Pepe nero', removable: true }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Classic Fresh Tonnarello', labelIt: 'Tonnarello Fresco Classico', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Pasta', labelIt: 'Pasta Senza Glutine', extra: 2.00 }
+        ]
+      },
+      {
+        id: 'lasagna',
+        name: 'Lasagna Casareccia',
+        category: 'Primi Romani',
+        price: 14.00,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: true,
+        badge: 'Oven Baked',
+        image: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Layers of fresh egg pasta, 6-hour slow-simmered beef & pork ragù, velvety béchamel, and Parmigiano Reggiano.',
+        descIt: 'Sfoglie di pasta fresca all’uovo, ragù lento della tradizione, besciamella vellutata e Parmigiano Reggiano.',
+        ingredients: [
+          { en: 'Parmigiano crust', it: 'Crosta di Parmigiano', removable: true },
+          { en: 'Slow-cooked ragù', it: 'Ragù tradizionale', removable: false },
+          { en: 'Béchamel sauce', it: 'Besciamella', removable: false }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Traditional Oven Baked', labelIt: 'Cottura Tradizionale al Forno', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Lasagna', labelIt: 'Lasagna Senza Glutine', extra: 2.00 }
+        ]
+      },
+      {
+        id: 'ravioli-ricotta',
+        name: 'Ravioli Ricotta e Spinaci',
+        category: 'Primi Romani',
+        price: 15.50,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: true,
+        badge: 'Vegetarian',
+        image: 'https://images.unsplash.com/photo-1587740908075-9e245070dfaa?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Handmade ravioli stuffed with Roman sheep’s ricotta & baby spinach, glazed in sage butter or fresh tomato.',
+        descIt: 'Ravioli artigianali ripieni di ricotta romana e spinaci, mantecati con burro e salvia o pomodoro fresco.',
+        ingredients: [
+          { en: 'Fresh sage leaves', it: 'Foglie di salvia', removable: true },
+          { en: 'Parmigiano Reggiano', it: 'Parmigiano Reggiano', removable: true },
+          { en: 'Black pepper', it: 'Pepe nero', removable: true }
+        ],
+        prepOptions: [
+          { id: 'sage-butter', labelEn: 'Butter & Sage Glaze', labelIt: 'Burro e Salvia', extra: 0 },
+          { id: 'tomato-basil', labelEn: 'Fresh Tomato & Basil Sauce', labelIt: 'Salsa Pomodoro e Basilico', extra: 0 },
+          { id: 'gf', labelEn: 'Gluten-Free Ravioli', labelIt: 'Ravioli Senza Glutine', extra: 2.00 }
+        ]
+      },
+      {
+        id: 'tagliere-genuino',
+        name: 'Tagliere Genuino (For Two)',
+        category: 'Antipasti & Taglieri',
+        price: 22.00,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: false,
+        badge: 'Sharing Board',
+        image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Artisanal Lazio cured meats, aged Pecorino & Caciotta cheeses, marinated Roman artichokes, olives & warm focaccia.',
+        descIt: 'Selezione di salumi laziali, formaggi stagionati, carciofi alla romana, olive e focaccia calda.',
+        ingredients: [
+          { en: 'Marinated artichokes', it: 'Carciofi alla romana', removable: true },
+          { en: 'Olives', it: 'Olive', removable: true },
+          { en: 'Aged Pecorino & Caciotta', it: 'Formaggi stagionati', removable: true },
+          { en: 'Warm focaccia bread', it: 'Focaccia calda', removable: true }
+        ],
+        prepOptions: [
+          { id: 'standard', labelEn: 'Standard Sharing Board', labelIt: 'Tagliere Classico', extra: 0 },
+          { id: 'no-bread', labelEn: 'No Bread / Gluten-Safe Board', labelIt: 'Senza Pane', extra: 0 }
+        ]
+      },
+      {
+        id: 'tagliere-delicato',
+        name: 'Tagliere Delicato',
+        category: 'Antipasti & Taglieri',
+        price: 18.00,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: false,
+        badge: 'Vegetarian',
+        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Curated Italian cheeses paired with wildflower honey, fig compote, walnuts, and grilled seasonal vegetables.',
+        descIt: 'Degustazione di formaggi italiani con miele millefiori, composta di fichi, noci e verdure grigliate.',
+        ingredients: [
+          { en: 'Walnuts (Nuts)', it: 'Noci', removable: true },
+          { en: 'Wildflower honey', it: 'Miele millefiori', removable: true },
+          { en: 'Fig compote', it: 'Composta di fichi', removable: true },
+          { en: 'Grilled vegetables', it: 'Verdure grigliate', removable: true }
+        ],
+        prepOptions: [
+          { id: 'standard', labelEn: 'Standard Cheese Board', labelIt: 'Tagliere Formaggi Classico', extra: 0 }
+        ]
+      },
+      {
+        id: 'patate-cacio-pepe',
+        name: 'Patate Fritte Cacio e Pepe',
+        category: 'Antipasti & Taglieri',
+        price: 8.50,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: false,
+        badge: 'Must Try',
+        image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Crispy hand-cut potatoes lavished with warm Pecorino Romano fondue and freshly ground black pepper.',
+        descIt: 'Patate croccanti servite con fonduta calda di Pecorino Romano D.O.P. e pepe nero macinato.',
+        ingredients: [
+          { en: 'Pecorino cheese fondue', it: 'Fonduta di Pecorino', removable: true },
+          { en: 'Black pepper', it: 'Pepe nero', removable: true },
+          { en: 'Sea salt', it: 'Sale fino', removable: true }
+        ],
+        prepOptions: [
+          { id: 'standard', labelEn: 'Sauce Tossed Over Fries', labelIt: 'Condite sopra le patate', extra: 0 },
+          { id: 'side-sauce', labelEn: 'Cheese Sauce on the Side', labelIt: 'Fonduta a parte', extra: 0 }
+        ]
+      },
+      {
+        id: 'prosciutto-melone',
+        name: 'Prosciutto Crudo e Melone',
+        category: 'Antipasti & Taglieri',
+        price: 11.50,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: false,
+        badge: 'Fresh Classic',
+        image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80',
+        descEn: '24-month aged Prosciutto di Parma thinly sliced over chilled sweet cantaloupe melon.',
+        descIt: 'Prosciutto di Parma stagionato 24 mesi tagliato sottile su melone cantalupo fresco.',
+        ingredients: [
+          { en: 'Cantaloupe melon', it: 'Melone cantalupo', removable: true },
+          { en: 'Prosciutto di Parma 24m', it: 'Prosciutto di Parma', removable: false }
+        ],
+        prepOptions: [
+          { id: 'standard', labelEn: 'Classic Plate', labelIt: 'Piatto Classico', extra: 0 }
+        ]
+      },
+      {
+        id: 'polpette-tradizione',
+        name: 'Polpette della Tradizione',
+        category: 'Secondi & Insalate',
+        price: 14.50,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: false,
+        badge: 'Nonna Recipe',
+        image: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Tender Roman beef meatballs slow-braised in rich basil tomato sugo, served in a skillet with rustic bread.',
+        descIt: 'Morbide polpette di manzo cotte lentamente nel sugo di pomodoro e basilico, servite in padellina.',
+        ingredients: [
+          { en: 'Tomato sugo', it: 'Sugo di pomodoro', removable: true },
+          { en: 'Parmigiano dusting', it: 'Parmigiano', removable: true },
+          { en: 'Fresh basil', it: 'Basilico', removable: true },
+          { en: 'Rustic bread slices', it: 'Pane casereccio', removable: true }
+        ],
+        prepOptions: [
+          { id: 'standard', labelEn: 'Served in Skillet with Bread', labelIt: 'In Padellina con Pane', extra: 0 },
+          { id: 'no-bread', labelEn: 'Without Bread', labelIt: 'Senza Pane', extra: 0 }
+        ]
+      },
+      {
+        id: 'saltimbocca',
+        name: 'Saltimbocca alla Romana',
+        category: 'Secondi & Insalate',
+        price: 16.50,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: false,
+        badge: 'Roman Icon',
+        image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Pan-seared veal escalopes topped with Prosciutto di Parma and fresh sage, deglazed in Frascati white wine.',
+        descIt: 'Fettine di vitello con Prosciutto di Parma e salvia fresca, sfumate al vino bianco dei Castelli.',
+        ingredients: [
+          { en: 'Fresh sage', it: 'Salvia fresca', removable: true },
+          { en: 'Prosciutto di Parma', it: 'Prosciutto crudo', removable: true },
+          { en: 'White wine butter jus', it: 'Fondo al vino bianco', removable: true }
+        ],
+        prepOptions: [
+          { id: 'standard', labelEn: 'Classic Pan-Seared', labelIt: 'Cottura Classica', extra: 0 }
+        ]
+      },
+      {
+        id: 'insalata-governo',
+        name: 'Insalata Governo Vecchio',
+        category: 'Secondi & Insalate',
+        price: 12.50,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: false,
+        badge: 'Vegetarian',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Crisp mixed greens, buffalo mozzarella, datterini tomatoes, Taggiasca olives, avocado & balsamic glaze.',
+        descIt: 'Misticanza fresca, mozzarella di bufala, pomodorini datterini, olive taggiasche, avocado e glassa balsamica.',
+        ingredients: [
+          { en: 'Datterini tomatoes', it: 'Pomodorini', removable: true },
+          { en: 'Buffalo mozzarella', it: 'Mozzarella di bufala', removable: true },
+          { en: 'Taggiasca olives', it: 'Olive taggiasche', removable: true },
+          { en: 'Avocado', it: 'Avocado', removable: true },
+          { en: 'Balsamic glaze', it: 'Glassa balsamica', removable: true }
+        ],
+        prepOptions: [
+          { id: 'dressed', labelEn: 'Dressed with EVOO & Balsamic', labelIt: 'Condita con Olio EVO e Balsamico', extra: 0 },
+          { id: 'dressing-side', labelEn: 'Dressing on the Side', labelIt: 'Condimento a parte', extra: 0 }
+        ]
+      },
+      {
+        id: 'insalata-trastevere',
+        name: 'Insalata Trastevere',
+        category: 'Secondi & Insalate',
+        price: 13.00,
+        signature: false,
+        vegetarian: false,
+        gfAvailable: false,
+        badge: 'Light & Fresh',
+        image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Baby spinach, grilled free-range chicken breast, shaved Parmigiano, toasted walnuts & lemon-herb vinaigrette.',
+        descIt: 'Spinacino fresco, petto di pollo grigliato, scaglie di Parmigiano, noci tostate e citronette.',
+        ingredients: [
+          { en: 'Toasted walnuts (Nuts)', it: 'Noci tostate', removable: true },
+          { en: 'Shaved Parmigiano', it: 'Scaglie di Parmigiano', removable: true },
+          { en: 'Lemon vinaigrette', it: 'Citronette al limone', removable: true }
+        ],
+        prepOptions: [
+          { id: 'dressed', labelEn: 'Classic Vinaigrette', labelIt: 'Condita Classica', extra: 0 },
+          { id: 'dressing-side', labelEn: 'Dressing on the Side', labelIt: 'Condimento a parte', extra: 0 }
+        ]
+      },
+      {
+        id: 'tiramisu',
+        name: 'Tiramisù della Casa',
+        category: 'Dolci & Vini',
+        price: 6.50,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: false,
+        badge: 'Homemade',
+        image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Espresso-soaked savoiardi biscuits layered with airy mascarpone cream and bittersweet Valrhona cocoa.',
+        descIt: 'Savoiardi inzuppati nel caffè espresso, crema soffice al mascarpone e cacao amaro.',
+        ingredients: [
+          { en: 'Cocoa powder dusting', it: 'Cacao amaro in polvere', removable: true },
+          { en: 'Chocolate shavings', it: 'Scaglie di cioccolato', removable: true }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Classic Portion', labelIt: 'Porzione Classica', extra: 0 }
+        ]
+      },
+      {
+        id: 'panna-cotta',
+        name: 'Panna Cotta ai Frutti di Bosco',
+        category: 'Dolci & Vini',
+        price: 6.00,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: false,
+        badge: 'Gluten-Free Dessert',
+        image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Madagascar vanilla bean cream topped with warm wild forest berry reduction.',
+        descIt: 'Panna cotta alla vaniglia del Madagascar con coulis caldo ai frutti di bosco.',
+        ingredients: [
+          { en: 'Forest berry coulis', it: 'Coulis ai frutti di bosco', removable: true },
+          { en: 'Fresh mint leaf', it: 'Fogliolina di menta', removable: true }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Berry Topping Over Cream', labelIt: 'Frutti di bosco sopra', extra: 0 },
+          { id: 'berry-side', labelEn: 'Berry Sauce on the Side', labelIt: 'Salsa ai frutti a parte', extra: 0 }
+        ]
+      },
+      {
+        id: 'cheesecake-cioccolato',
+        name: 'Cheesecake al Cioccolato',
+        category: 'Dolci & Vini',
+        price: 6.00,
+        signature: false,
+        vegetarian: true,
+        gfAvailable: false,
+        badge: 'Sweet Finish',
+        image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80',
+        descEn: 'Velvety dark chocolate and ricotta cheesecake on a crisp hazelnut biscuit crust.',
+        descIt: 'Cheesecake cremosa al cioccolato fondente su base croccante di biscotti alle nocciole.',
+        ingredients: [
+          { en: 'Dark chocolate drizzle', it: 'Colata di cioccolato', removable: true },
+          { en: 'Hazelnut crumble', it: 'Granella di nocciole', removable: true }
+        ],
+        prepOptions: [
+          { id: 'classic', labelEn: 'Classic Slice', labelIt: 'Fetta Classica', extra: 0 }
+        ]
+      }
+    ];
+
+    const FAQ_ITEMS = [
+      {
+        q: "Is gluten-free pasta available?",
+        a: "Yes! Every single Primo Romano on our menu—including Tonnarello Carbonara, Cacio e Pepe, and Amatriciana—can be prepared with certified gluten-free pasta upon request. Simply let your server know when ordering."
+      },
+      {
+        q: "Do you offer vegetarian and vegan dishes?",
+        a: "Absolutely. Classics like Tonnarello Cacio e Pepe, Ravioli Ricotta e Spinaci, and Patate Cacio e Pepe are vegetarian, while our Tonnarello 'Nonna Nadia' and seasonal salads can be prepared 100% vegan."
+      },
+      {
+        q: "Are dogs allowed at Tonnarello San Pietro?",
+        a: "Yes, small and medium-sized well-behaved dogs are warmly welcomed both on our outdoor Borgo terrace and inside our dining room."
+      },
+      {
+        q: "Do you have baby high chairs and wheelchair access?",
+        a: "Yes, our ground-floor dining area and entrance on Via del Mascherino 80 are wheelchair accessible, and complimentary baby high chairs are available for families."
+      },
+      {
+        q: "What is your reservation grace period & payment policy?",
+        a: "We hold reserved tables for 15 minutes past your booking time—ideal if you are walking over from St. Peter's Basilica or the Vatican Museums. All major credit/debit cards and contactless payments are accepted."
+      },
+      {
+        q: "Where can I park near the restaurant?",
+        a: "Via del Mascherino is steps from the Vatican pedestrian zone. Public garages are available 4 minutes away at Parking Piazza Cavour and Terminal Gianicolo (Largo di Porta Cavalleggeri)."
+      }
+    ];
+
+    let currentLang = 'en';
+    let currentView = 'home';
+    let activeMenuCategory = 'All';
+    let activeDietaryFilter = 'All';
+    let tastingList = [];
+
+    const todayStr = new Date().toISOString().split('T')[0];
+    let bookingState = {
+      guests: 2,
+      date: todayStr,
+      time: '20:00',
+      seating: 'Indoor Historic Room'
+    };
+
+    let custState = {
+      dishId: null,
+      editIndex: null,
+      removedIndices: [],
+      selectedPrepId: null,
+      chefNote: ''
+    };
+
+    function switchView(viewName) {
+      currentView = viewName;
+      document.querySelectorAll('.view-section').forEach(sec => {
+        sec.classList.toggle('active', sec.id === `view-${viewName}`);
+      });
+
+      document.querySelectorAll('[data-view-btn]').forEach(btn => {
+        const isActive = btn.getAttribute('data-view-btn') === viewName;
+        btn.classList.toggle('bg-espresso-900', isActive);
+        btn.classList.toggle('text-travertine-50', isActive);
+        btn.classList.toggle('text-espresso-800', !isActive);
+        btn.classList.toggle('hover:bg-travertine-200', !isActive);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMobileNav(force) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const openIcon = document.getElementById('mob-open-icon');
+      const closeIcon = document.getElementById('mob-close-icon');
+      const isOpen = typeof force === 'boolean' ? force : drawer.classList.contains('hidden');
+
+      drawer.classList.toggle('hidden', !isOpen);
+      openIcon.classList.toggle('hidden', isOpen);
+      closeIcon.classList.toggle('hidden', !isOpen);
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const enBtn = document.getElementById('lang-en-btn');
+      const itBtn = document.getElementById('lang-it-btn');
+
+      if (lang === 'en') {
+        enBtn.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition bg-espresso-900 text-travertine-50';
+        itBtn.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition text-espresso-700 hover:text-espresso-900';
+      } else {
+        itBtn.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition bg-espresso-900 text-travertine-50';
+        enBtn.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition text-espresso-700 hover:text-espresso-900';
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (TRANSLATIONS[lang][key]) {
+          el.textContent = TRANSLATIONS[lang][key];
+        }
+      });
+
+      renderSignatureDishes();
+      renderMenuFilters();
+      renderMenuGrid();
+      updateTastingUI();
+      if (!document.getElementById('customize-modal').classList.contains('hidden')) {
+        renderCustomizeModalContent();
+      }
+    }
+
+    function initBookingControls() {
+      const partyGrid = document.getElementById('party-size-grid');
+      const sizes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      partyGrid.innerHTML = sizes.map(num => {
+        const label = num === 10 ? '10+' : String(num);
+        const active = bookingState.guests === num;
+        return `
+          <button type="button" onclick="selectPartySize(${num})" id="party-btn-${num}"
+            class="py-2.5 rounded-xl text-xs font-bold border transition ${
+              active
+                ? 'bg-terracotta-500 text-white border-terracotta-600 shadow-xs'
+                : 'bg-travertine-50 text-espresso-900 border-travertine-300 hover:border-terracotta-500'
+            }">
+            ${label}
+          </button>
+        `;
+      }).join('');
+
+      const dateInput = document.getElementById('booking-date');
+      dateInput.min = todayStr;
+      dateInput.value = bookingState.date;
+
+      const lunchSlots = ['11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00'];
+      const dinnerSlots = ['18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00'];
+
+      document.getElementById('lunch-slots-grid').innerHTML = renderTimeSlotButtons(lunchSlots);
+      document.getElementById('dinner-slots-grid').innerHTML = renderTimeSlotButtons(dinnerSlots);
+
+      updateBookingSummary();
+    }
+
+    function renderTimeSlotButtons(slots) {
+      return slots.map(slot => {
+        const active = bookingState.time === slot;
+        return `
+          <button type="button" onclick="selectTimeSlot('${slot}')" data-slot-btn="${slot}"
+            class="py-2.5 px-2 rounded-xl text-xs font-bold border transition ${
+              active
+                ? 'bg-espresso-900 text-saffron-400 border-espresso-900 shadow-xs'
+                : 'bg-travertine-50 text-espresso-900 border-travertine-300 hover:border-espresso-900'
+            }">
+            ${slot}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectPartySize(num) {
+      bookingState.guests = num;
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.getElementById(`party-btn-${i}`);
+        if (!btn) continue;
+        const active = i === num;
+        btn.className = `py-2.5 rounded-xl text-xs font-bold border transition ${
+          active
+            ? 'bg-terracotta-500 text-white border-terracotta-600 shadow-xs'
+            : 'bg-travertine-50 text-espresso-900 border-travertine-300 hover:border-terracotta-500'
+        }`;
+      }
+      updateBookingSummary();
+    }
+
+    function selectSeating(seatingLabel) {
+      bookingState.seating = seatingLabel;
+      const indoor = document.getElementById('seat-indoor');
+      const outdoor = document.getElementById('seat-outdoor');
+      const isIndoor = seatingLabel === 'Indoor Historic Room';
+
+      indoor.className = `p-3 rounded-2xl border-2 text-left transition ${
+        isIndoor ? 'border-terracotta-500 bg-terracotta-500/5' : 'border-travertine-300 bg-white'
+      }`;
+      outdoor.className = `p-3 rounded-2xl border-2 text-left transition ${
+        !isIndoor ? 'border-terracotta-500 bg-terracotta-500/5' : 'border-travertine-300 bg-white'
+      }`;
+      updateBookingSummary();
+    }
+
+    function selectTimeSlot(slot) {
+      bookingState.time = slot;
+      document.querySelectorAll('[data-slot-btn]').forEach(btn => {
+        const active = btn.getAttribute('data-slot-btn') === slot;
+        btn.className = `py-2.5 px-2 rounded-xl text-xs font-bold border transition ${
+          active
+            ? 'bg-espresso-900 text-saffron-400 border-espresso-900 shadow-xs'
+            : 'bg-travertine-50 text-espresso-900 border-travertine-300 hover:border-espresso-900'
+        }`;
+      });
+      updateBookingSummary();
+    }
+
+    function goToBookingStep(stepNum) {
+      document.getElementById('booking-confirmed-card').classList.add('hidden');
+      [1, 2, 3].forEach(s => {
+        document.getElementById(`booking-step-${s}`).classList.toggle('hidden', s !== stepNum);
+        const dot = document.getElementById(`step-dot-${s}`);
+        const isCurrentOrPast = s <= stepNum;
+        dot.className = `w-8 h-8 rounded-full font-bold text-xs flex items-center justify-center transition ${
+          isCurrentOrPast ? 'bg-terracotta-500 text-white' : 'bg-travertine-200 text-espresso-700'
+        }`;
+      });
+      updateBookingSummary();
+    }
+
+    function toggleQuickTag(btn, tagText) {
+      const notesField = document.getElementById('res-notes');
+      const isSelected = btn.getAttribute('data-selected') === 'true';
+      if (isSelected) {
+        btn.setAttribute('data-selected', 'false');
+        btn.className = 'px-3 py-1.5 rounded-full border border-travertine-300 text-xs font-semibold text-espresso-700 hover:border-terracotta-500 transition';
+        notesField.value = notesField.value
+          .split(',')
+          .map(p => p.trim())
+          .filter(p => p && p !== tagText)
+          .join(', ');
+      } else {
+        btn.setAttribute('data-selected', 'true');
+        btn.className = 'px-3 py-1.5 rounded-full border border-terracotta-500 bg-terracotta-500 text-xs font-semibold text-white transition';
+        const existing = notesField.value.split(',').map(p => p.trim()).filter(Boolean);
+        if (!existing.includes(tagText)) {
+          existing.push(tagText);
+          notesField.value = existing.join(', ');
+        }
+      }
+    }
+
+    function updateBookingSummary() {
+      const dateVal = document.getElementById('booking-date')?.value || bookingState.date;
+      bookingState.date = dateVal;
+      const guestLabel = bookingState.guests === 10 ? '10+ Guests' : `${bookingState.guests} ${bookingState.guests === 1 ? 'Guest' : 'Guests'}`;
+      const dateDisplay = dateVal === todayStr ? `Today (${dateVal})` : dateVal;
+
+      document.getElementById('sum-guests').textContent = guestLabel;
+      document.getElementById('sum-date').textContent = dateDisplay;
+      document.getElementById('sum-time').textContent = bookingState.time;
+      document.getElementById('sum-seating').textContent = bookingState.seating;
+    }
+
+    function confirmReservation(e) {
+      e.preventDefault();
+      const name = document.getElementById('res-name').value.trim();
+      const email = document.getElementById('res-email').value.trim();
+      const phone = document.getElementById('res-phone').value.trim();
+      const notes = document.getElementById('res-notes').value.trim();
+      const refCode = 'TSP-' + Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('confirmed-code').textContent = `CONFIRMED • #${refCode}`;
+      document.getElementById('confirmed-subtitle').textContent = `Grazie ${name}! Your table for ${bookingState.guests} is confirmed at Via del Mascherino, 80.`;
+      document.getElementById('confirmed-details-box').innerHTML = `
+        <div class="flex justify-between"><span class="text-espresso-700">Guest:</span><strong>${name} (${phone})</strong></div>
+        <div class="flex justify-between"><span class="text-espresso-700">Email:</span><strong>${email}</strong></div>
+        <div class="flex justify-between"><span class="text-espresso-700">Date & Time:</span><strong>${bookingState.date} at ${bookingState.time}</strong></div>
+        <div class="flex justify-between"><span class="text-espresso-700">Party & Seating:</span><strong>${bookingState.guests} Guests • ${bookingState.seating}</strong></div>
+        ${notes ? `<div class="pt-2 border-t border-travertine-300"><span class="text-espresso-700">Notes:</span> <strong>${notes}</strong></div>` : ''}
+      `;
+
+      [1, 2, 3].forEach(s => document.getElementById(`booking-step-${s}`).classList.add('hidden'));
+      document.getElementById('booking-confirmed-card').classList.remove('hidden');
+      showToast(`Reservation #${refCode} confirmed!`);
+    }
+
+    function downloadCalendarInvite() {
+      const cleanDate = bookingState.date.replace(/-/g, '');
+      const cleanTime = bookingState.time.replace(':', '') + '00';
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        `SUMMARY:Dining at Tonnarello San Pietro (${bookingState.guests} Guests)`,
+        `DTSTART:${cleanDate}T${cleanTime}`,
+        'LOCATION:Via del Mascherino 80, 00193 Roma RM, Italy',
+        'DESCRIPTION:Table reservation at Tonnarello San Pietro - Cucina Romana dal 1876.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Tonnarello-San-Pietro-Reservation.ics';
+      link.click();
+    }
+
+    function resetBookingFlow() {
+      document.getElementById('res-name').value = '';
+      document.getElementById('res-phone').value = '';
+      document.getElementById('res-email').value = '';
+      document.getElementById('res-notes').value = '';
+      goToBookingStep(1);
+    }
+
+    function renderSignatureDishes() {
+      const container = document.getElementById('signature-dishes-grid');
+      const classics = MENU_ITEMS.filter(item => item.signature);
+      container.innerHTML = classics.map(item => `
+        <div class="group bg-espresso-800/90 rounded-3xl border border-white/10 overflow-hidden flex flex-col hover:border-saffron-500/40 transition">
+          <div class="relative aspect-[4/3] overflow-hidden bg-espresso-950">
+            <img src="${item.image}"
+                 onerror="this.src='https://placehold.co/600x450/261E1B/D4A359?text=${encodeURIComponent(item.name)}'"
+                 alt="${item.name}"
+                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-espresso-950/85 text-saffron-400 text-[10px] font-bold uppercase tracking-wider border border-saffron-500/20">
+              ${item.badge}
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <h3 class="font-serif font-bold text-2xl text-travertine-50 leading-tight">${item.name}</h3>
+              <span class="font-bold text-base text-saffron-400 shrink-0">€${item.price.toFixed(2)}</span>
+            </div>
+            <p class="text-xs text-travertine-300 leading-relaxed flex-1 mb-5">
+              ${currentLang === 'en' ? item.descEn : item.descIt}
+            </p>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" onclick="openCustomizeModal('${item.id}')" class="py-2.5 px-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-travertine-50 text-xs font-bold transition">
+                ${currentLang === 'en' ? 'Customize' : 'Personalizza'}
+              </button>
+              <button type="button" onclick="quickAddToTasting('${item.id}')" class="py-2.5 px-3 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold transition">
+                + ${currentLang === 'en' ? 'Add' : 'Aggiungi'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderMenuFilters() {
+      const categories = ['All', 'Primi Romani', 'Antipasti & Taglieri', 'Secondi & Insalate', 'Dolci & Vini'];
+      document.getElementById('menu-category-tabs').innerHTML = categories.map(cat => {
+        const active = activeMenuCategory === cat;
+        const label = cat === 'All' ? (currentLang === 'en' ? 'All Courses' : 'Tutto il Menù') : cat;
+        return `
+          <button type="button" onclick="selectMenuCategory('${cat}')"
+            class="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition ${
+              active
+                ? 'bg-espresso-900 text-travertine-50 shadow-xs'
+                : 'bg-travertine-200 text-espresso-800 hover:bg-travertine-300'
+            }">
+            ${label}
+          </button>
+        `;
+      }).join('');
+
+      const dietaries = [
+        { id: 'All', en: 'All Diets', it: 'Tutte' },
+        { id: 'Vegetarian', en: 'Vegetarian', it: 'Vegetariano' },
+        { id: 'Gluten-Free Option', en: 'Gluten-Free Option', it: 'Senza Glutine' }
+      ];
+      document.getElementById('menu-dietary-pills').innerHTML = dietaries.map(d => {
+        const active = activeDietaryFilter === d.id;
+        return `
+          <button type="button" onclick="selectDietaryFilter('${d.id}')"
+            class="px-3.5 py-1.5 rounded-full text-xs font-semibold border transition ${
+              active
+                ? 'bg-terracotta-500 text-white border-terracotta-600'
+                : 'bg-white text-espresso-800 border-travertine-300 hover:border-terracotta-500'
+            }">
+            ${currentLang === 'en' ? d.en : d.it}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectMenuCategory(cat) {
+      activeMenuCategory = cat;
+      renderMenuFilters();
+      renderMenuGrid();
+    }
+
+    function selectDietaryFilter(diet) {
+      activeDietaryFilter = diet;
+      renderMenuFilters();
+      renderMenuGrid();
+    }
+
+    function renderMenuGrid() {
+      const grid = document.getElementById('menu-items-grid');
+      const filtered = MENU_ITEMS.filter(item => {
+        const matchCat = activeMenuCategory === 'All' || item.category === activeMenuCategory;
+        const matchDiet =
+          activeDietaryFilter === 'All' ||
+          (activeDietaryFilter === 'Vegetarian' && item.vegetarian) ||
+          (activeDietaryFilter === 'Gluten-Free Option' && item.gfAvailable);
+        return matchCat && matchDiet;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full bg-white rounded-3xl border border-travertine-300 p-10 text-center space-y-3">
+            <p class="font-serif font-bold text-2xl text-espresso-900">No dishes match that exact filter</p>
+            <button type="button" onclick="selectMenuCategory('All'); selectDietaryFilter('All');" class="px-5 py-2.5 rounded-full bg-espresso-900 text-white text-xs font-bold">
+              Reset Menu Filters
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const ingPreview = (item.ingredients || [])
+          .map(ing => currentLang === 'en' ? ing.en : ing.it)
+          .join(' • ');
+        return `
+        <div class="bg-white rounded-3xl border border-travertine-300 overflow-hidden shadow-xs hover:shadow-xl transition flex flex-col">
+          <div class="relative aspect-[16/10] bg-travertine-200 overflow-hidden">
+            <img src="${item.image}"
+                 onerror="this.src='https://placehold.co/600x400/261E1B/D4A359?text=${encodeURIComponent(item.name)}'"
+                 alt="${item.name}"
+                 class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-full bg-espresso-900/90 text-travertine-50 text-[10px] font-bold uppercase tracking-wider">
+                ${item.badge}
+              </span>
+              ${item.gfAvailable ? `<span class="px-2.5 py-1 rounded-full bg-olive-600 text-white text-[10px] font-bold uppercase tracking-wider">GF Option</span>` : ''}
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-terracotta-600">${item.category}</span>
+                <h3 class="font-serif font-bold text-2xl text-espresso-900 leading-tight">${item.name}</h3>
+              </div>
+              <span class="font-extrabold text-lg text-espresso-900 shrink-0">€${item.price.toFixed(2)}</span>
+            </div>
+
+            <p class="text-xs text-espresso-700 leading-relaxed mb-3">
+              ${currentLang === 'en' ? item.descEn : item.descIt}
+            </p>
+
+            ${ingPreview ? `
+              <div class="mb-4 px-3 py-2 rounded-xl bg-travertine-100 border border-travertine-200/80 text-[11px] text-espresso-700 flex-1">
+                <span class="font-bold text-espresso-900">${currentLang === 'en' ? 'Ingredients:' : 'Ingredienti:'}</span> ${ingPreview}
+              </div>
+            ` : '<div class="flex-1"></div>'}
+
+            <div class="pt-3 border-t border-travertine-200 flex items-center justify-between gap-2">
+              <button type="button" onclick="openCustomizeModal('${item.id}')" class="flex-1 py-2.5 px-3.5 rounded-full border border-espresso-900/20 bg-travertine-100 hover:bg-espresso-900 text-espresso-900 hover:text-travertine-50 text-xs font-bold transition flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg>
+                <span>${currentLang === 'en' ? 'Customize' : 'Personalizza'}</span>
+              </button>
+              <button type="button" onclick="quickAddToTasting('${item.id}')" class="py-2.5 px-4 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold transition shrink-0">
+                + ${currentLang === 'en' ? 'Add' : 'Aggiungi'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      }).join('');
+    }
+
+    function renderFAQ() {
+      const container = document.getElementById('faq-accordion');
+      container.innerHTML = FAQ_ITEMS.map((item, idx) => `
+        <div class="bg-white rounded-2xl border border-travertine-300 overflow-hidden shadow-2xs">
+          <button type="button" onclick="toggleFaqItem(${idx})" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-travertine-100/60 transition">
+            <span class="font-serif font-bold text-xl text-espresso-900">${item.q}</span>
+            <span id="faq-icon-${idx}" class="text-terracotta-600 font-bold text-lg shrink-0">+</span>
+          </button>
+          <div id="faq-body-${idx}" class="hidden px-6 pb-5 text-sm text-espresso-700 leading-relaxed border-t border-travertine-200/70 pt-3">
+            ${item.a}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleFaqItem(idx) {
+      const body = document.getElementById(`faq-body-${idx}`);
+      const icon = document.getElementById(`faq-icon-${idx}`);
+      const isHidden = body.classList.contains('hidden');
+      body.classList.toggle('hidden', !isHidden);
+      icon.textContent = isHidden ? '−' : '+';
+    }
+
+    function openPrintMenuModal() {
+      const categories = ['Primi Romani', 'Antipasti & Taglieri', 'Secondi & Insalate', 'Dolci & Vini'];
+      document.getElementById('printable-menu-body').innerHTML = categories.map(cat => {
+        const items = MENU_ITEMS.filter(i => i.category === cat);
+        return `
+          <div>
+            <h3 class="font-serif font-bold text-2xl text-espresso-900 border-b border-gray-200 pb-1.5 mb-3">${cat}</h3>
+            <div class="space-y-3">
+              ${items.map(i => `
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="font-bold text-espresso-900">${i.name} ${i.gfAvailable ? '<span class="text-[11px] font-normal text-olive-700">(GF Option)</span>' : ''}</p>
+                    <p class="text-xs text-gray-600">${currentLang === 'en' ? i.descEn : i.descIt}</p>
+                  </div>
+                  <span class="font-bold text-espresso-900 shrink-0">€${i.price.toFixed(2)}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const modal = document.getElementById('print-menu-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closePrintMenuModal() {
+      const modal = document.getElementById('print-menu-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function openCustomizeModal(itemId, editIndex = null) {
+      const item = MENU_ITEMS.find(i => i.id === itemId);
+      if (!item) return;
+
+      if (editIndex !== null && tastingList[editIndex]) {
+        const existing = tastingList[editIndex];
+        custState = {
+          dishId: item.id,
+          editIndex,
+          removedIndices: [...(existing.removedIndices || [])],
+          selectedPrepId: existing.prepId || (item.prepOptions?.[0]?.id ?? null),
+          chefNote: existing.chefNote || ''
+        };
+      } else {
+        custState = {
+          dishId: item.id,
+          editIndex: null,
+          removedIndices: [],
+          selectedPrepId: item.prepOptions?.[0]?.id ?? null,
+          chefNote: ''
+        };
+      }
+
+      document.getElementById('cust-chef-note').value = custState.chefNote;
+      renderCustomizeModalContent();
+
+      const modal = document.getElementById('customize-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCustomizeModal() {
+      const modal = document.getElementById('customize-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function renderCustomizeModalContent() {
+      const item = MENU_ITEMS.find(i => i.id === custState.dishId);
+      if (!item) return;
+
+      document.getElementById('cust-dish-img').src = item.image;
+      document.getElementById('cust-dish-cat').textContent = item.category;
+      document.getElementById('cust-dish-title').textContent = item.name;
+      document.getElementById('cust-dish-base-price').textContent = `€${item.price.toFixed(2)}`;
+      document.getElementById('cust-dish-desc').textContent = currentLang === 'en' ? item.descEn : item.descIt;
+
+      const removedCount = custState.removedIndices.length;
+      document.getElementById('cust-removed-counter').textContent = removedCount > 0
+        ? (currentLang === 'en' ? `${removedCount} removed` : `${removedCount} rimossi`)
+        : '';
+
+      const ingGrid = document.getElementById('cust-ingredients-grid');
+      ingGrid.innerHTML = (item.ingredients || []).map((ing, idx) => {
+        const label = currentLang === 'en' ? ing.en : ing.it;
+        const isRemoved = custState.removedIndices.includes(idx);
+
+        if (!ing.removable) {
+          return `
+            <span class="px-3.5 py-2 rounded-full bg-travertine-200/70 border border-travertine-300 text-espresso-700 text-xs font-medium inline-flex items-center gap-1.5 opacity-80" title="${currentLang === 'en' ? 'Core recipe ingredient' : 'Ingrediente base'}">
+              <span>✓ ${label}</span>
+              <span class="text-[10px] uppercase tracking-wider text-espresso-700/70">(${currentLang === 'en' ? 'Base' : 'Base'})</span>
+            </span>
+          `;
+        }
+
+        return `
+          <button type="button" onclick="toggleIngredientRemoval(${idx})"
+            class="px-3.5 py-2 rounded-full text-xs font-bold border transition inline-flex items-center gap-1.5 ${
+              isRemoved
+                ? 'bg-terracotta-500 text-white border-terracotta-600 shadow-xs'
+                : 'bg-white text-espresso-900 border-travertine-300 hover:border-terracotta-500'
+            }">
+            ${isRemoved
+              ? `<span>✕ ${currentLang === 'en' ? 'No' : 'Senza'} ${label}</span>`
+              : `<span>${label}</span><span class="text-[10px] text-terracotta-600 font-semibold">(${currentLang === 'en' ? 'Remove' : 'Rimuovi'})</span>`
+            }
+          </button>
+        `;
+      }).join('');
+
+      const prepSection = document.getElementById('cust-prep-section');
+      const prepGrid = document.getElementById('cust-prep-grid');
+      if (item.prepOptions && item.prepOptions.length > 0) {
+        prepSection.classList.remove('hidden');
+        prepGrid.innerHTML = item.prepOptions.map(opt => {
+          const active = custState.selectedPrepId === opt.id;
+          const optLabel = currentLang === 'en' ? opt.labelEn : opt.labelIt;
+          return `
+            <button type="button" onclick="selectCustPrep('${opt.id}')"
+              class="p-3 rounded-2xl border-2 text-left transition flex items-center justify-between gap-2 ${
+                active
+                  ? 'border-terracotta-500 bg-terracotta-500/8 text-espresso-900'
+                  : 'border-travertine-300 bg-white text-espresso-800 hover:border-espresso-700'
+              }">
+              <span class="text-xs font-bold">${optLabel}</span>
+              ${opt.extra > 0 ? `<span class="text-[11px] font-bold text-terracotta-600 shrink-0">+€${opt.extra.toFixed(2)}</span>` : ''}
+            </button>
+          `;
+        }).join('');
+      } else {
+        prepSection.classList.add('hidden');
+      }
+
+      const quickChips = [
+        { en: 'No onion', it: 'Senza cipolla' },
+        { en: 'Sauce on the side', it: 'Salsa a parte' },
+        { en: 'Mild / Not spicy', it: 'Poco piccante' },
+        { en: 'Severe allergy alert', it: 'Allergia grave' }
+      ];
+      document.getElementById('cust-quick-chips').innerHTML = quickChips.map(chip => {
+        const text = currentLang === 'en' ? chip.en : chip.it;
+        return `
+          <button type="button" onclick="appendChefQuickNote('${text}')"
+            class="px-3 py-1 rounded-full bg-travertine-200 hover:bg-espresso-900 text-espresso-800 hover:text-white text-[11px] font-semibold transition">
+            + ${text}
+          </button>
+        `;
+      }).join('');
+
+      const selectedPrep = (item.prepOptions || []).find(o => o.id === custState.selectedPrepId);
+      const finalPrice = item.price + (selectedPrep ? selectedPrep.extra : 0);
+      document.getElementById('cust-live-price').textContent = `€${finalPrice.toFixed(2)}`;
+      document.getElementById('cust-submit-btn').textContent = custState.editIndex !== null
+        ? (currentLang === 'en' ? 'Update Dish in Note' : 'Aggiorna Piatto')
+        : (currentLang === 'en' ? 'Add to Tasting Note' : 'Aggiungi alla Nota');
+    }
+
+    function toggleIngredientRemoval(idx) {
+      const pos = custState.removedIndices.indexOf(idx);
+      if (pos >= 0) {
+        custState.removedIndices.splice(pos, 1);
+      } else {
+        custState.removedIndices.push(idx);
+      }
+      renderCustomizeModalContent();
+    }
+
+    function selectCustPrep(prepId) {
+      custState.selectedPrepId = prepId;
+      renderCustomizeModalContent();
+    }
+
+    function appendChefQuickNote(text) {
+      const input = document.getElementById('cust-chef-note');
+      if (!input.value.includes(text)) {
+        input.value = input.value ? `${input.value}, ${text}` : text;
+      }
+    }
+
+    function saveCustomizedDish() {
+      const item = MENU_ITEMS.find(i => i.id === custState.dishId);
+      if (!item) return;
+
+      const chefNote = document.getElementById('cust-chef-note').value.trim();
+      const sortedRemoved = [...custState.removedIndices].sort((a, b) => a - b);
+      const prepId = custState.selectedPrepId || (item.prepOptions?.[0]?.id ?? 'classic');
+
+      const entryPayload = {
+        id: item.id,
+        qty: 1,
+        removedIndices: sortedRemoved,
+        prepId,
+        chefNote
+      };
+
+      if (custState.editIndex !== null && tastingList[custState.editIndex]) {
+        entryPayload.qty = tastingList[custState.editIndex].qty;
+        tastingList[custState.editIndex] = entryPayload;
+        showToast(currentLang === 'en' ? `Updated "${item.name}"` : `Aggiornato "${item.name}"`);
+      } else {
+        const match = tastingList.find(t =>
+          t.id === entryPayload.id &&
+          t.prepId === entryPayload.prepId &&
+          t.chefNote === entryPayload.chefNote &&
+          JSON.stringify(t.removedIndices || []) === JSON.stringify(entryPayload.removedIndices)
+        );
+        if (match) {
+          match.qty += 1;
+        } else {
+          tastingList.push(entryPayload);
+        }
+        showToast(currentLang === 'en' ? `Added "${item.name}" to your table note` : `Aggiunto "${item.name}" alla nota`);
+      }
+
+      closeCustomizeModal();
+      updateTastingUI();
+    }
+
+    function quickAddToTasting(itemId) {
+      const item = MENU_ITEMS.find(i => i.id === itemId);
+      if (!item) return;
+      const defaultPrepId = item.prepOptions?.[0]?.id ?? 'classic';
+      const existing = tastingList.find(t =>
+        t.id === itemId &&
+        (t.removedIndices || []).length === 0 &&
+        (t.prepId || defaultPrepId) === defaultPrepId &&
+        !t.chefNote
+      );
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        tastingList.push({
+          id: item.id,
+          qty: 1,
+          removedIndices: [],
+          prepId: defaultPrepId,
+          chefNote: ''
+        });
+      }
+      updateTastingUI();
+      showToast(currentLang === 'en' ? `Added "${item.name}" to your table note` : `Aggiunto "${item.name}" alla nota`);
+    }
+
+    function removeFromTasting(index) {
+      tastingList.splice(index, 1);
+      updateTastingUI();
+    }
+
+    function getEntryUnitPrice(item, entry) {
+      const prep = (item.prepOptions || []).find(o => o.id === entry.prepId);
+      return item.price + (prep ? prep.extra : 0);
+    }
+
+    function updateTastingUI() {
+      const totalCount = tastingList.reduce((acc, i) => acc + i.qty, 0);
+      document.getElementById('tasting-badge').textContent = totalCount;
+
+      const listContainer = document.getElementById('tasting-list-items');
+      let totalPrice = 0;
+
+      if (tastingList.length === 0) {
+        listContainer.innerHTML = `
+          <div class="p-6 rounded-2xl bg-travertine-200/60 text-center text-xs text-espresso-700">
+            ${currentLang === 'en'
+              ? 'Your tasting list is empty. Browse <strong>Il Menù</strong> and tap “Customize” or “+ Add” on any dish.'
+              : 'La tua lista è vuota. Sfoglia <strong>Il Menù</strong> e tocca “Personalizza” o “+ Aggiungi” su qualsiasi piatto.'}
+          </div>
+        `;
+      } else {
+        listContainer.innerHTML = tastingList.map((entry, idx) => {
+          const item = MENU_ITEMS.find(i => i.id === entry.id);
+          if (!item) return '';
+          const unitPrice = getEntryUnitPrice(item, entry);
+          totalPrice += unitPrice * entry.qty;
+
+          const prepObj = (item.prepOptions || []).find(o => o.id === entry.prepId);
+          const isNonDefaultPrep = prepObj && item.prepOptions && item.prepOptions[0]?.id !== prepObj.id;
+          const prepBadge = isNonDefaultPrep
+            ? `<span class="px-2 py-0.5 rounded-full bg-olive-600/15 text-olive-700 border border-olive-600/25 text-[10px] font-bold">${currentLang === 'en' ? prepObj.labelEn : prepObj.labelIt}</span>`
+            : '';
+
+          const removedBadges = (entry.removedIndices || []).map(rIdx => {
+            const ing = item.ingredients?.[rIdx];
+            if (!ing) return '';
+            const label = currentLang === 'en' ? `No ${ing.en}` : `Senza ${ing.it}`;
+            return `<span class="px-2 py-0.5 rounded-full bg-terracotta-500/15 text-terracotta-700 border border-terracotta-500/25 text-[10px] font-bold">✕ ${label}</span>`;
+          }).join('');
+
+          const noteBadge = entry.chefNote
+            ? `<span class="px-2 py-0.5 rounded-full bg-espresso-900/10 text-espresso-900 text-[10px] font-semibold">📝 "${entry.chefNote}"</span>`
+            : '';
+
+          const hasCustomizations = prepBadge || removedBadges || noteBadge;
+
+          return `
+            <div class="p-4 rounded-2xl bg-white border border-travertine-300 space-y-2.5 shadow-2xs">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="font-serif font-bold text-lg text-espresso-900 leading-tight">${item.name}</p>
+                  <p class="text-xs text-espresso-700">Qty: ${entry.qty} × €${unitPrice.toFixed(2)}</p>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button type="button" onclick="openCustomizeModal('${item.id}', ${idx})" class="text-xs font-bold text-espresso-800 hover:text-terracotta-600 underline">
+                    ${currentLang === 'en' ? 'Edit' : 'Modifica'}
+                  </button>
+                  <span class="text-travertine-300">|</span>
+                  <button type="button" onclick="removeFromTasting(${idx})" class="text-xs font-bold text-terracotta-600 hover:underline">
+                    ${currentLang === 'en' ? 'Remove' : 'Rimuovi'}
+                  </button>
+                </div>
+              </div>
+              ${hasCustomizations ? `<div class="flex flex-wrap gap-1.5 pt-1">${prepBadge}${removedBadges}${noteBadge}</div>` : ''}
+            </div>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('tasting-total').textContent = `€${totalPrice.toFixed(2)}`;
+    }
+
+    function buildItalianWaiterText() {
+      if (tastingList.length === 0) return '';
+      const lines = ['Ciao! Ecco la nostra scelta da Tonnarello San Pietro:'];
+      tastingList.forEach(entry => {
+        const item = MENU_ITEMS.find(i => i.id === entry.id);
+        if (!item) return;
+        const mods = [];
+        const prepObj = (item.prepOptions || []).find(o => o.id === entry.prepId);
+        if (prepObj && item.prepOptions?.[0]?.id !== prepObj.id) {
+          mods.push(prepObj.labelIt.toUpperCase());
+        }
+        (entry.removedIndices || []).forEach(rIdx => {
+          const ing = item.ingredients?.[rIdx];
+          if (ing) mods.push(`SENZA ${ing.it.toLowerCase()}`);
+        });
+        if (entry.chefNote) {
+          mods.push(`Nota: ${entry.chefNote}`);
+        }
+        const suffix = mods.length > 0 ? ` — [${mods.join(', ')}]` : '';
+        lines.push(`• ${entry.qty}x ${item.name}${suffix}`);
+      });
+      return lines.join('\n');
+    }
+
+    function copyWaiterSummary() {
+      if (tastingList.length === 0) {
+        showToast(currentLang === 'en' ? 'Add dishes to your tasting note first' : 'Aggiungi prima qualche piatto');
+        return;
+      }
+      const text = buildItalianWaiterText();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(currentLang === 'en' ? 'Copied Italian kitchen order for your waiter!' : 'Ordine copiato per il cameriere!');
+        }).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        document.execCommand('copy');
+        showToast(currentLang === 'en' ? 'Copied Italian kitchen order for your waiter!' : 'Ordine copiato per il cameriere!');
+      } catch (e) {
+        showToast('Ready to show waiter');
+      }
+      document.body.removeChild(tempArea);
+    }
+
+    function toggleTastingDrawer(force) {
+      const drawer = document.getElementById('tasting-drawer');
+      const open = typeof force === 'boolean' ? force : drawer.classList.contains('hidden');
+      drawer.classList.toggle('hidden', !open);
+      drawer.classList.toggle('flex', open);
+    }
+
+    function attachTastingToReservation() {
+      toggleTastingDrawer(false);
+      if (tastingList.length > 0) {
+        const formatted = tastingList.map(entry => {
+          const item = MENU_ITEMS.find(i => i.id === entry.id);
+          if (!item) return '';
+          const mods = [];
+          const prepObj = (item.prepOptions || []).find(o => o.id === entry.prepId);
+          if (prepObj && item.prepOptions?.[0]?.id !== prepObj.id) {
+            mods.push(prepObj.labelEn);
+          }
+          (entry.removedIndices || []).forEach(rIdx => {
+            const ing = item.ingredients?.[rIdx];
+            if (ing) mods.push(`No ${ing.en}`);
+          });
+          if (entry.chefNote) mods.push(entry.chefNote);
+          return `${entry.qty}x ${item.name}${mods.length ? ` (${mods.join(', ')})` : ''}`;
+        }).join('; ');
+        document.getElementById('res-notes').value = `Tasting wishlist: ${formatted}`;
+      }
+      switchView('reserve');
+      goToBookingStep(3);
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.add('translate-y-24', 'opacity-0'), 2600);
+    }
+
+    function bootApp() {
+      try {
+        renderSignatureDishes();
+        renderMenuFilters();
+        renderMenuGrid();
+        initBookingControls();
+        renderFAQ();
+        updateTastingUI();
+        switchView('home');
+      } catch (err) {
+        console.error('Boot error:', err);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bootApp);
+    } else {
+      bootApp();
+    }
+  </script>
+</body>
+</html>
